@@ -6,6 +6,7 @@
 *.[Oo]bj
 *.exe
 *.pdb
+*.db
 *.user
 *.aps
 *.pch
@@ -27,6 +28,7 @@
 *.dll
 *.sh
 *.VisualState.xml
+UpgradeLog.htm
 ipch/
 obj/
 [Bb]in
