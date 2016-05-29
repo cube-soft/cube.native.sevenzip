@@ -1,4 +1,4 @@
-// Archive/ZipItem.h
+﻿// Archive/ZipItem.h
 
 #ifndef __ARCHIVE_ZIP_ITEM_H
 #define __ARCHIVE_ZIP_ITEM_H
@@ -294,6 +294,7 @@ public:
     return (Crc != 0 || !IsDir());
   }
   
+#ifdef SEVENZIP_ORIGINAL
   UINT GetCodePage() const
   {
     Byte hostOS = GetHostOS();
@@ -303,6 +304,24 @@ public:
         || hostOS == NFileHeader::NHostOS::kUnix // do we need it?
         ) ? CP_OEMCP : CP_ACP);
   }
+#else
+  virtual WORD GetCodePage() const
+  {
+    Byte hostOS = GetHostOS();
+    switch (hostOS) {
+    case NFileHeader::NHostOS::kFAT:
+    case NFileHeader::NHostOS::kNTFS:
+      return CP_OEMCP;
+    case NFileHeader::NHostOS::kMac:
+    case NFileHeader::NHostOS::kOSX:
+    case NFileHeader::NHostOS::kUnix:
+      return CP_UTF8;
+    default:
+      break;
+    }
+    return CP_ACP;
+  }
+#endif
 };
 
 }}
