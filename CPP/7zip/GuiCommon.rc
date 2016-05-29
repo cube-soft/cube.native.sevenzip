@@ -7,7 +7,7 @@
 #include <CommCtrl.h>
 
 
-LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+LANGUAGE LANG_JAPANESE, SUBLANG_JAPANESE_JAPAN
 
 #undef m
 #undef bxs
@@ -59,7 +59,7 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 
 #define MY_PAGE_STYLE  STYLE  WS_CHILD | WS_DISABLED | WS_CAPTION
 
-#define MY_FONT  FONT 8, "MS Shell Dlg"
+#define MY_FONT  FONT 9, "MS UI Gothic"
 
 #define SMALL_PAGE_SIZE_X 120
 
@@ -69,7 +69,7 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 
 #define OK_CANCEL \
   DEFPUSHBUTTON  "OK",     IDOK,     bx2, by, bxs, bys \
-  PUSHBUTTON     "Cancel", IDCANCEL, bx1, by, bxs, bys
+  PUSHBUTTON     "キャンセル", IDCANCEL, bx1, by, bxs, bys
 
 
 #define MY_COMBO  CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
