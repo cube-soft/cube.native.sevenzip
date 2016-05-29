@@ -1,59 +1,59 @@
-#include "ExtractRes.h"
+﻿#include "ExtractRes.h"
 
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 
 STRINGTABLE DISCARDABLE
 BEGIN
-  IDS_MEM_ERROR  "The system cannot allocate the required amount of memory"
-  IDS_CANNOT_CREATE_FOLDER  "Cannot create folder '{0}'"
-  IDS_UPDATE_NOT_SUPPORTED  "Update operations are not supported for this archive."
-  IDS_CANT_OPEN_ARCHIVE  "Can not open file '{0}' as archive"
-  IDS_CANT_OPEN_ENCRYPTED_ARCHIVE  "Can not open encrypted archive '{0}'. Wrong password?"
-  IDS_UNSUPPORTED_ARCHIVE_TYPE  "Unsupported archive type"
+  IDS_MEM_ERROR  "メモリを確保することができませんでした。"
+  IDS_CANNOT_CREATE_FOLDER "フォルダを作ることができません： '{0}'"
+  IDS_UPDATE_NOT_SUPPORTED "更新操作はサポートされていません。"
+  IDS_CANT_OPEN_ARCHIVE  "圧縮ファイルとして開くことができません： '{0}'"
+  IDS_CANT_OPEN_ENCRYPTED_ARCHIVE  "暗号化されたファイルを開くことができません： '{0}'"
+  IDS_UNSUPPORTED_ARCHIVE_TYPE  "サポートされていない圧縮形式です。"
 
-  IDS_CANT_OPEN_AS_TYPE   "Can not open the file as {0} archive"
-  IDS_IS_OPEN_AS_TYPE     "The file is open as {0} archive"
+  IDS_CANT_OPEN_AS_TYPE   "{0} 形式として開くことができませんでした。"
+  IDS_IS_OPEN_AS_TYPE     "{0} 形式のファイルとして開きました。"
   IDS_IS_OPEN_WITH_OFFSET "The archive is open with offset"
 
-  IDS_PROGRESS_EXTRACTING "Extracting"
+  IDS_PROGRESS_EXTRACTING "解凍中"
 
-  IDS_PROGRESS_SKIPPING   "Skipping"
+  IDS_PROGRESS_SKIPPING   "スキップ"
 
-  IDS_EXTRACT_SET_FOLDER  "Specify a location for extracted files."
+  IDS_EXTRACT_SET_FOLDER  "解凍ファイルの場所を指定する。"
 
-  IDS_EXTRACT_PATHS_FULL    "Full pathnames"
-  IDS_EXTRACT_PATHS_NO      "No pathnames"
-  IDS_EXTRACT_PATHS_ABS     "Absolute pathnames"
-  IDS_PATH_MODE_RELAT       "Relative pathnames"
+  IDS_EXTRACT_PATHS_FULL    "フルパス"
+  IDS_EXTRACT_PATHS_NO      "パス無し"
+  IDS_EXTRACT_PATHS_ABS     "絶対パス"
+  IDS_PATH_MODE_RELAT       "相対パス"
 
-  IDS_EXTRACT_OVERWRITE_ASK             "Ask before overwrite"
-  IDS_EXTRACT_OVERWRITE_WITHOUT_PROMPT  "Overwrite without prompt"
-  IDS_EXTRACT_OVERWRITE_SKIP_EXISTING   "Skip existing files"
-  IDS_EXTRACT_OVERWRITE_RENAME          "Auto rename"
-  IDS_EXTRACT_OVERWRITE_RENAME_EXISTING "Auto rename existing files"
+  IDS_EXTRACT_OVERWRITE_ASK             "上書き時に確認"
+  IDS_EXTRACT_OVERWRITE_WITHOUT_PROMPT  "確認せずに上書き"
+  IDS_EXTRACT_OVERWRITE_SKIP_EXISTING   "既に存在する場合はスキップ"
+  IDS_EXTRACT_OVERWRITE_RENAME          "自動的にリネーム"
+  IDS_EXTRACT_OVERWRITE_RENAME_EXISTING "ファイルが存在する時に自動的にリネーム"
 
-  IDS_EXTRACT_MESSAGE_UNSUPPORTED_METHOD   "Unsupported compression method for '{0}'."
-  IDS_EXTRACT_MESSAGE_DATA_ERROR           "Data error in '{0}'. File is broken"
-  IDS_EXTRACT_MESSAGE_CRC_ERROR            "CRC failed in '{0}'. File is broken."
-  IDS_EXTRACT_MESSAGE_DATA_ERROR_ENCRYPTED "Data error in encrypted file '{0}'. Wrong password?"
-  IDS_EXTRACT_MESSAGE_CRC_ERROR_ENCRYPTED  "CRC failed in encrypted file '{0}'. Wrong password?"
+  IDS_EXTRACT_MESSAGE_UNSUPPORTED_METHOD   "'{0}' の圧縮方法はサポートされていません。"
+  IDS_EXTRACT_MESSAGE_DATA_ERROR           "'{0}' のデータエラーを検知しました。ファイルが破損しています。"
+  IDS_EXTRACT_MESSAGE_CRC_ERROR            "'{0}' の CRC が合致しません。ファイルが破損しています。"
+  IDS_EXTRACT_MESSAGE_DATA_ERROR_ENCRYPTED "暗号化されたファイル '{0}' のデータエラーを検知しました。パスワードを間違えていませんか？"
+  IDS_EXTRACT_MESSAGE_CRC_ERROR_ENCRYPTED  "暗号化されたファイル '{0}' の CRC が合致しません。パスワードを間違えていませんか？"
 
-  IDS_EXTRACT_MSG_WRONG_PSW_GUESS      "Wrong password?"
+  IDS_EXTRACT_MSG_WRONG_PSW_GUESS      "パスワードを間違えていませんか？"
   // IDS_EXTRACT_MSG_ENCRYPTED            "Encrypted file"
 
-  IDS_EXTRACT_MSG_UNSUPPORTED_METHOD   "Unsupported compression method"
-  IDS_EXTRACT_MSG_DATA_ERROR           "Data error"
-  IDS_EXTRACT_MSG_CRC_ERROR            "CRC failed"
-  IDS_EXTRACT_MSG_UNAVAILABLE_DATA     "Unavailable data"
-  IDS_EXTRACT_MSG_UEXPECTED_END        "Unexpected end of data";
+  IDS_EXTRACT_MSG_UNSUPPORTED_METHOD   "圧縮方法はサポートされていません。"
+  IDS_EXTRACT_MSG_DATA_ERROR           "データエラー"
+  IDS_EXTRACT_MSG_CRC_ERROR            "CRC が合致しません"
+  IDS_EXTRACT_MSG_UNAVAILABLE_DATA     "利用できないデータ"
+  IDS_EXTRACT_MSG_UEXPECTED_END        "予期しないデータの終了";
   IDS_EXTRACT_MSG_DATA_AFTER_END       "There are some data after the end of the payload data"  
-  IDS_EXTRACT_MSG_IS_NOT_ARC           "Is not archive"  
-  IDS_EXTRACT_MSG_HEADERS_ERROR        "Headers Error"
-  IDS_EXTRACT_MSG_WRONG_PSW_CLAIM      "Wrong password"
+  IDS_EXTRACT_MSG_IS_NOT_ARC           "圧縮データではありません"  
+  IDS_EXTRACT_MSG_HEADERS_ERROR        "ヘッダーエラー"
+  IDS_EXTRACT_MSG_WRONG_PSW_CLAIM      "パスワードが違います"
 
   IDS_OPEN_MSG_UNAVAILABLE_START  "Unavailable start of archive"
   IDS_OPEN_MSG_UNCONFIRMED_START  "Unconfirmed start of archive"
   // IDS_OPEN_MSG_ERROR_FLAGS + 5  "Unexpected end of archive"
   // IDS_OPEN_MSG_ERROR_FLAGS + 6  "There are data after the end of archive"
-  IDS_OPEN_MSG_UNSUPPORTED_FEATURE  "Unsupported feature"
+  IDS_OPEN_MSG_UNSUPPORTED_FEATURE  "サポートされていない特徴です"
 END
