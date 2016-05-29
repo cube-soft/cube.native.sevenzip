@@ -1,4 +1,4 @@
-/* ------------------------------------------------------------------------- */
+﻿/* ------------------------------------------------------------------------- */
 ///
 /// Environments.h
 /// 
@@ -29,7 +29,13 @@ namespace Cube {
 namespace Archive {
 namespace Environments {
     /* --------------------------------------------------------------------- */
-    //  GetEncoding
+    ///
+    /// GetEncoding
+    ///
+    /// <summary>
+    /// 文字コードを取得します。
+    /// </summary>
+    ///
     /* --------------------------------------------------------------------- */
     inline int GetEncoding() {
         TCHAR buffer[32] = {};
@@ -39,7 +45,13 @@ namespace Environments {
     }
 
     /* --------------------------------------------------------------------- */
-    //  SetEncoding
+    ///
+    /// SetEncoding
+    ///
+    /// <summary>
+    /// 文字コードを設定します。
+    /// </summary>
+    ///
     /* --------------------------------------------------------------------- */
     inline void SetEncoding(int encoding) {
         TCHAR buffer[32] = {};
@@ -47,10 +59,35 @@ namespace Environments {
         ::SetEnvironmentVariable(_T("Encoding"), buffer);
     }
     
+    /* --------------------------------------------------------------------- */
+    ///
+    /// SetEncoding
+    ///
+    /// <summary>
+    /// 文字コードを設定します。
+    /// </summary>
+    ///
+    /* --------------------------------------------------------------------- */
+    inline void SetEncoding(const std::basic_string<wchar_t>& name) {
+        auto encoding = Encoding::Unknown;
+        
+        if (name == L"SJIS") encoding = Encoding::ShiftJis;
+        else if (name == L"EUC") encoding = Encoding::EucJp;
+        else if (name == L"JIS") encoding = Encoding::Jis;
+        else if (name == L"UTF8" || name == L"UTF-8") encoding = Encoding::Utf8;
+        else if (name == L"UTF16" || name == L"UTF-16") encoding = Encoding::Unicode;
+        else if (name == L"IGNORE") encoding = Encoding::Ignore;
+
+        if (encoding != Encoding::Unknown) SetEncoding(encoding);
+    }
+    
+    /* --------------------------------------------------------------------- */
+    //  SetEncoding
+    /* --------------------------------------------------------------------- */
     inline std::vector<std::basic_string<char>> GetWarning() {
         std::vector<std::basic_string<char>> dest;
         
-    }
+    }    
 }}} // Cube::Archive::Environments
 
 #endif // CUBE_ARCHIVE_ENVIRONMENTS_H
