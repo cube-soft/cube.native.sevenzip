@@ -1,4 +1,4 @@
-// ZipHandlerOut.cpp
+﻿// ZipHandlerOut.cpp
 
 #include "StdAfx.h"
 
@@ -249,8 +249,11 @@ STDMETHODIMP CHandler::UpdateItems(ISequentialOutStream *outStream, UInt32 numIt
       if (!m_ForceAesMode)
         options.IsAesMode = thereAreAesUpdates;
 
+#ifdef SEVENZIP_ORIGINAL
       if (!IsSimpleAsciiString(password))
         return E_INVALIDARG;
+#endif
+
       if (password)
         options.Password = UnicodeStringToMultiByte((LPCOLESTR)password, CP_OEMCP);
       if (options.IsAesMode)
