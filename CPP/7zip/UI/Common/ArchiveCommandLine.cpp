@@ -1,4 +1,4 @@
-// ArchiveCommandLine.cpp
+﻿// ArchiveCommandLine.cpp
 
 #include "StdAfx.h"
 #undef printf
@@ -27,6 +27,10 @@
 #include "SortUtils.h"
 #include "Update.h"
 #include "UpdateAction.h"
+
+#ifndef SEVENZIP_ORIGINAL
+#include "Common/Cube/Environments.h"
+#endif
 
 extern bool g_CaseSensitive;
 
@@ -975,11 +979,19 @@ static Int32 FindCharset(const NCommandLineParser::CParser &parser, unsigned key
   for (unsigned i = 0;; i++)
   {
     if (i == num) // to disable warnings from different compilers
+#ifdef SEVENZIP_ORIGINAL
       throw CArcCmdLineException("Unsupported charset:", name);
+#else
+      break;
+#endif
     const CCodePagePair &pair = g_CodePagePairs[i];
     if (name.IsEqualTo(pair.Name))
       return pair.CodePage;
   }
+#ifndef SEVENZIP_ORIGINAL
+  Cube::Archive::Environments::SetEncoding((const wchar_t*)name);
+  return defaultVal;
+#endif
 }
 
 HRESULT EnumerateDirItemsAndSort(
