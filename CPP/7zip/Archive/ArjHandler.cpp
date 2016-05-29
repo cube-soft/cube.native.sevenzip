@@ -1,4 +1,4 @@
-// ArjHandler.cpp
+﻿// ArjHandler.cpp
 
 #include "StdAfx.h"
 
@@ -657,7 +657,11 @@ static void SetHostOS(Byte hostOS, NCOM::CPropVariant &prop)
 static void SetUnicodeString(const AString &s, NCOM::CPropVariant &prop)
 {
   if (!s.IsEmpty())
+#ifdef SEVENZIP_ORIGINAL
     prop = MultiByteToUnicodeString(s, CP_OEMCP);
+#else
+    prop = MultiByteToUnicodeComment(s, CP_OEMCP);
+#endif
 }
  
 STDMETHODIMP CHandler::GetArchiveProperty(PROPID propID, PROPVARIANT *value)

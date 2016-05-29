@@ -1,4 +1,4 @@
-// Archive/Common/ItemNameUtils.cpp
+﻿// Archive/Common/ItemNameUtils.cpp
 
 #include "StdAfx.h"
 
@@ -68,7 +68,8 @@ bool HasTailSlash(const AString &name, UINT
   if (name.IsEmpty())
     return false;
   LPCSTR prev =
-  #if defined(_WIN32) && !defined(UNDER_CE)
+  #ifdef SEVENZIP_ORIGINAL
+  // #if defined(_WIN32) && !defined(UNDER_CE)
     CharPrevExA((WORD)codePage, name, &name[name.Len()], 0);
   #else
     (LPCSTR)(name) + (name.Len() - 1);
