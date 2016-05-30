@@ -77,12 +77,12 @@ namespace Encoding {
         /* ----------------------------------------------------------------- */
         static int Guess(const system_string& src) {
             auto result = babel::analyze_base_encoding(src).get_strict_result();
-            switch (result.get_strict_result()) {
+            switch (result) {
             case Ascii:
             case ShiftJis:
                 return ShiftJis;
             case EucJp:
-            case Ji:
+            case Jis:
             case Utf8:
             case Unicode:
                 return result;
@@ -122,6 +122,20 @@ namespace Encoding {
             return Widen(src);
         }
 
+        /* ----------------------------------------------------------------- */
+        ///
+        /// ToUnicode
+        ///
+        /// <summary>
+        /// Unicode に変換します。
+        /// </summary>
+        ///
+        /* ----------------------------------------------------------------- */
+        static unicode_string ToUnicode(const system_string& src) {
+            auto encoding = Guess(src);
+            return ToUnicode(src, encoding);
+        }
+
     private:
         /* ----------------------------------------------------------------- */
         ///
@@ -132,7 +146,7 @@ namespace Encoding {
         /// </summary>
         ///
         /* ----------------------------------------------------------------- */
-        static unicde_string Widen(const system_string& src) {
+        static unicode_string Widen(const system_string& src) {
             wchar_t buffer[2048] = {};
             auto result = ::MultiByteToWideChar(CP_ACP, 0, src.c_str(), -1, buffer, sizeof(buffer) / sizeof(wchar_t));
             return (result != 0) ? unicode_string(buffer) : unicode_string();

@@ -53,7 +53,7 @@ namespace Encoding {
     ///
     /* --------------------------------------------------------------------- */
     inline std::basic_string<char> ToString(int encoding) {
-        case (encoding) {
+        switch (encoding) {
             case ShiftJis: return "SJIS";
             case EucJp:    return "EUC";
             case Jis:      return "JIS";
