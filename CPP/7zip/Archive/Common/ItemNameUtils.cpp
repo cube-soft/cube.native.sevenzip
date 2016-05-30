@@ -1,4 +1,4 @@
-﻿// Archive/Common/ItemNameUtils.cpp
+// Archive/Common/ItemNameUtils.cpp
 
 #include "StdAfx.h"
 

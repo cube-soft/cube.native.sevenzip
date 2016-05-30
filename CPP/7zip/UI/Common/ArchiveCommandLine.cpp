@@ -1,4 +1,4 @@
-﻿// ArchiveCommandLine.cpp
+// ArchiveCommandLine.cpp
 
 #include "StdAfx.h"
 #undef printf

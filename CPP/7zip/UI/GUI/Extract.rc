@@ -1,59 +1,59 @@
-﻿#include "ExtractRes.h"
+#include "ExtractRes.h"
 
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 
 STRINGTABLE DISCARDABLE
 BEGIN
-  IDS_MEM_ERROR  "メモリを確保することができませんでした。"
-  IDS_CANNOT_CREATE_FOLDER "フォルダを作ることができません： '{0}'"
-  IDS_UPDATE_NOT_SUPPORTED "更新操作はサポートされていません。"
-  IDS_CANT_OPEN_ARCHIVE  "圧縮ファイルとして開くことができません： '{0}'"
-  IDS_CANT_OPEN_ENCRYPTED_ARCHIVE  "暗号化されたファイルを開くことができません： '{0}'"
-  IDS_UNSUPPORTED_ARCHIVE_TYPE  "サポートされていない圧縮形式です。"
+  IDS_MEM_ERROR  "���������m�ۂ��邱�Ƃ��ł��܂���ł����B"
+  IDS_CANNOT_CREATE_FOLDER "�t�H���_����邱�Ƃ��ł��܂���F '{0}'"
+  IDS_UPDATE_NOT_SUPPORTED "�X�V����̓T�|�[�g����Ă��܂���B"
+  IDS_CANT_OPEN_ARCHIVE  "���k�t�@�C���Ƃ��ĊJ�����Ƃ��ł��܂���F '{0}'"
+  IDS_CANT_OPEN_ENCRYPTED_ARCHIVE  "�Í������ꂽ�t�@�C�����J�����Ƃ��ł��܂���F '{0}'"
+  IDS_UNSUPPORTED_ARCHIVE_TYPE  "�T�|�[�g����Ă��Ȃ����k�`���ł��B"
 
-  IDS_CANT_OPEN_AS_TYPE   "{0} 形式として開くことができませんでした。"
-  IDS_IS_OPEN_AS_TYPE     "{0} 形式のファイルとして開きました。"
+  IDS_CANT_OPEN_AS_TYPE   "{0} �`���Ƃ��ĊJ�����Ƃ��ł��܂���ł����B"
+  IDS_IS_OPEN_AS_TYPE     "{0} �`���̃t�@�C���Ƃ��ĊJ���܂����B"
   IDS_IS_OPEN_WITH_OFFSET "The archive is open with offset"
 
-  IDS_PROGRESS_EXTRACTING "解凍中"
+  IDS_PROGRESS_EXTRACTING "�𓀒�"
 
-  IDS_PROGRESS_SKIPPING   "スキップ"
+  IDS_PROGRESS_SKIPPING   "�X�L�b�v"
 
-  IDS_EXTRACT_SET_FOLDER  "解凍ファイルの場所を指定する。"
+  IDS_EXTRACT_SET_FOLDER  "�𓀃t�@�C���̏ꏊ���w�肷��B"
 
-  IDS_EXTRACT_PATHS_FULL    "フルパス"
-  IDS_EXTRACT_PATHS_NO      "パス無し"
-  IDS_EXTRACT_PATHS_ABS     "絶対パス"
-  IDS_PATH_MODE_RELAT       "相対パス"
+  IDS_EXTRACT_PATHS_FULL    "�t���p�X"
+  IDS_EXTRACT_PATHS_NO      "�p�X����"
+  IDS_EXTRACT_PATHS_ABS     "��΃p�X"
+  IDS_PATH_MODE_RELAT       "���΃p�X"
 
-  IDS_EXTRACT_OVERWRITE_ASK             "上書き時に確認"
-  IDS_EXTRACT_OVERWRITE_WITHOUT_PROMPT  "確認せずに上書き"
-  IDS_EXTRACT_OVERWRITE_SKIP_EXISTING   "既に存在する場合はスキップ"
-  IDS_EXTRACT_OVERWRITE_RENAME          "自動的にリネーム"
-  IDS_EXTRACT_OVERWRITE_RENAME_EXISTING "ファイルが存在する時に自動的にリネーム"
+  IDS_EXTRACT_OVERWRITE_ASK             "�㏑�����Ɋm�F"
+  IDS_EXTRACT_OVERWRITE_WITHOUT_PROMPT  "�m�F�����ɏ㏑��"
+  IDS_EXTRACT_OVERWRITE_SKIP_EXISTING   "���ɑ��݂���ꍇ�̓X�L�b�v"
+  IDS_EXTRACT_OVERWRITE_RENAME          "�����I�Ƀ��l�[��"
+  IDS_EXTRACT_OVERWRITE_RENAME_EXISTING "�t�@�C�������݂��鎞�Ɏ����I�Ƀ��l�[��"
 
-  IDS_EXTRACT_MESSAGE_UNSUPPORTED_METHOD   "'{0}' の圧縮方法はサポートされていません。"
-  IDS_EXTRACT_MESSAGE_DATA_ERROR           "'{0}' のデータエラーを検知しました。ファイルが破損しています。"
-  IDS_EXTRACT_MESSAGE_CRC_ERROR            "'{0}' の CRC が合致しません。ファイルが破損しています。"
-  IDS_EXTRACT_MESSAGE_DATA_ERROR_ENCRYPTED "暗号化されたファイル '{0}' のデータエラーを検知しました。パスワードを間違えていませんか？"
-  IDS_EXTRACT_MESSAGE_CRC_ERROR_ENCRYPTED  "暗号化されたファイル '{0}' の CRC が合致しません。パスワードを間違えていませんか？"
+  IDS_EXTRACT_MESSAGE_UNSUPPORTED_METHOD   "'{0}' �̈��k���@�̓T�|�[�g����Ă��܂���B"
+  IDS_EXTRACT_MESSAGE_DATA_ERROR           "'{0}' �̃f�[�^�G���[�����m���܂����B�t�@�C�����j�����Ă��܂��B"
+  IDS_EXTRACT_MESSAGE_CRC_ERROR            "'{0}' �� CRC �����v���܂���B�t�@�C�����j�����Ă��܂��B"
+  IDS_EXTRACT_MESSAGE_DATA_ERROR_ENCRYPTED "�Í������ꂽ�t�@�C�� '{0}' �̃f�[�^�G���[�����m���܂����B�p�X���[�h���ԈႦ�Ă��܂��񂩁H"
+  IDS_EXTRACT_MESSAGE_CRC_ERROR_ENCRYPTED  "�Í������ꂽ�t�@�C�� '{0}' �� CRC �����v���܂���B�p�X���[�h���ԈႦ�Ă��܂��񂩁H"
 
-  IDS_EXTRACT_MSG_WRONG_PSW_GUESS      "パスワードを間違えていませんか？"
+  IDS_EXTRACT_MSG_WRONG_PSW_GUESS      "�p�X���[�h���ԈႦ�Ă��܂��񂩁H"
   // IDS_EXTRACT_MSG_ENCRYPTED            "Encrypted file"
 
-  IDS_EXTRACT_MSG_UNSUPPORTED_METHOD   "圧縮方法はサポートされていません。"
-  IDS_EXTRACT_MSG_DATA_ERROR           "データエラー"
-  IDS_EXTRACT_MSG_CRC_ERROR            "CRC が合致しません"
-  IDS_EXTRACT_MSG_UNAVAILABLE_DATA     "利用できないデータ"
-  IDS_EXTRACT_MSG_UEXPECTED_END        "予期しないデータの終了";
+  IDS_EXTRACT_MSG_UNSUPPORTED_METHOD   "���k���@�̓T�|�[�g����Ă��܂���B"
+  IDS_EXTRACT_MSG_DATA_ERROR           "�f�[�^�G���["
+  IDS_EXTRACT_MSG_CRC_ERROR            "CRC �����v���܂���"
+  IDS_EXTRACT_MSG_UNAVAILABLE_DATA     "���p�ł��Ȃ��f�[�^"
+  IDS_EXTRACT_MSG_UEXPECTED_END        "�\�����Ȃ��f�[�^�̏I��";
   IDS_EXTRACT_MSG_DATA_AFTER_END       "There are some data after the end of the payload data"  
-  IDS_EXTRACT_MSG_IS_NOT_ARC           "圧縮データではありません"  
-  IDS_EXTRACT_MSG_HEADERS_ERROR        "ヘッダーエラー"
-  IDS_EXTRACT_MSG_WRONG_PSW_CLAIM      "パスワードが違います"
+  IDS_EXTRACT_MSG_IS_NOT_ARC           "���k�f�[�^�ł͂���܂���"  
+  IDS_EXTRACT_MSG_HEADERS_ERROR        "�w�b�_�[�G���["
+  IDS_EXTRACT_MSG_WRONG_PSW_CLAIM      "�p�X���[�h���Ⴂ�܂�"
 
   IDS_OPEN_MSG_UNAVAILABLE_START  "Unavailable start of archive"
   IDS_OPEN_MSG_UNCONFIRMED_START  "Unconfirmed start of archive"
   // IDS_OPEN_MSG_ERROR_FLAGS + 5  "Unexpected end of archive"
   // IDS_OPEN_MSG_ERROR_FLAGS + 6  "There are data after the end of archive"
-  IDS_OPEN_MSG_UNSUPPORTED_FEATURE  "サポートされていない特徴です"
+  IDS_OPEN_MSG_UNSUPPORTED_FEATURE  "�T�|�[�g����Ă��Ȃ������ł�"
 END

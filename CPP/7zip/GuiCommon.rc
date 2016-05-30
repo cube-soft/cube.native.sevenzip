@@ -1,4 +1,4 @@
-ï»¿#include <windows.h>
+#include <windows.h>
 
 // #include <winnt.h>
 // #include <WinUser.h>
@@ -69,7 +69,7 @@ LANGUAGE LANG_JAPANESE, SUBLANG_JAPANESE_JAPAN
 
 #define OK_CANCEL \
   DEFPUSHBUTTON  "OK",     IDOK,     bx2, by, bxs, bys \
-  PUSHBUTTON     "ã‚­ãƒ£ãƒ³ã‚»ãƒ«", IDCANCEL, bx1, by, bxs, bys
+  PUSHBUTTON     "ƒLƒƒƒ“ƒZƒ‹", IDCANCEL, bx1, by, bxs, bys
 
 
 #define MY_COMBO  CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP

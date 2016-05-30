@@ -1,4 +1,4 @@
-ï»¿#undef bxs
+#undef bxs
 #define bxs 80
 
 #define x0s MY_PROGRESS_LABEL_UNITS_START
@@ -41,22 +41,22 @@
 
 
 DIALOG_ID  DIALOG  0, 0, xs, ys  MY_MODAL_RESIZE_DIALOG_STYLE  MY_FONT
-CAPTION "é€²æ—"
+CAPTION "i’»"
 {
-  DEFPUSHBUTTON  "ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰", IDB_PROGRESS_BACKGROUND, bx3, by, bxs, bys
-  PUSHBUTTON     "ä¸€æ™‚åœæ­¢",      IDB_PAUSE                bx2, by, bxs, bys
-  PUSHBUTTON     "ã‚­ãƒ£ãƒ³ã‚»ãƒ«",      IDCANCEL,                bx1, by, bxs, bys
+  DEFPUSHBUTTON  "ƒoƒbƒNƒOƒ‰ƒEƒ“ƒh", IDB_PROGRESS_BACKGROUND, bx3, by, bxs, bys
+  PUSHBUTTON     "ˆêŽž’âŽ~",      IDB_PAUSE                bx2, by, bxs, bys
+  PUSHBUTTON     "ƒLƒƒƒ“ƒZƒ‹",      IDCANCEL,                bx1, by, bxs, bys
 
-  LTEXT  "çµŒéŽæ™‚é–“:",      IDT_PROGRESS_ELAPSED,   m, y0, x0s, 8
-  LTEXT  "æ®‹ã‚Šæ™‚é–“:",    IDT_PROGRESS_REMAINING, m, y1, x0s, 8
-  LTEXT  "ãƒ•ã‚¡ã‚¤ãƒ«æ•°:",             IDT_PROGRESS_FILES,     m, y2, x0s, 8
-  LTEXT  "åœ§ç¸®çŽ‡:", IDT_PROGRESS_RATIO,     m, y3, x0s, 8
-  LTEXT  "ã‚¨ãƒ©ãƒ¼:",            IDT_PROGRESS_ERRORS,    m, y4, x0s, 8
+  LTEXT  "Œo‰ßŽžŠÔ:",      IDT_PROGRESS_ELAPSED,   m, y0, x0s, 8
+  LTEXT  "Žc‚èŽžŠÔ:",    IDT_PROGRESS_REMAINING, m, y1, x0s, 8
+  LTEXT  "ƒtƒ@ƒCƒ‹”:",             IDT_PROGRESS_FILES,     m, y2, x0s, 8
+  LTEXT  "ˆ³k—¦:", IDT_PROGRESS_RATIO,     m, y3, x0s, 8
+  LTEXT  "ƒGƒ‰[:",            IDT_PROGRESS_ERRORS,    m, y4, x0s, 8
 
-  LTEXT  "åˆè¨ˆã‚µã‚¤ã‚º:",        IDT_PROGRESS_TOTAL,    x2, y0, x2s, 8
-  LTEXT  "é€Ÿåº¦:",             IDT_PROGRESS_SPEED,    x2, y1, x2s, 8
-  LTEXT  "å‡¦ç†æ¸ˆã¿:",         IDT_PROGRESS_PROCESSED,x2, y2, x2s, 8
-  LTEXT  "åœ§ç¸®ã‚µã‚¤ã‚º:"  , IDT_PROGRESS_PACKED,   x2, y3, x2s, 8
+  LTEXT  "‡ŒvƒTƒCƒY:",        IDT_PROGRESS_TOTAL,    x2, y0, x2s, 8
+  LTEXT  "‘¬“x:",             IDT_PROGRESS_SPEED,    x2, y1, x2s, 8
+  LTEXT  "ˆ—Ï‚Ý:",         IDT_PROGRESS_PROCESSED,x2, y2, x2s, 8
+  LTEXT  "ˆ³kƒTƒCƒY:"  , IDT_PROGRESS_PACKED,   x2, y3, x2s, 8
 
   RTEXT  "",  IDT_PROGRESS_ELAPSED_VAL,   x1, y0, x1s, MY_TEXT_NOPREFIX
   RTEXT  "",  IDT_PROGRESS_REMAINING_VAL, x1, y1, x1s, MY_TEXT_NOPREFIX
