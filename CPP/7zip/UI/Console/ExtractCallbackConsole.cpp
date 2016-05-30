@@ -300,7 +300,13 @@ STDMETHODIMP CExtractCallbackConsole::PrepareOperation(const wchar_t *name, Int3
     _tempU.Empty();
     if (name)
       _tempU = name;
+#ifdef SEVENZIP_ORIGINAL
     _so->PrintUString(_tempU, _tempA);
+#else
+    *_so << "<";
+    _so->PrintUString(_tempU, _tempA);
+    *_so << ">";
+#endif
     if (position)
       *_so << " <" << *position << ">";
     *_so << endl;
