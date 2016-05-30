@@ -28,10 +28,6 @@
 #include "Update.h"
 #include "UpdateAction.h"
 
-#ifndef SEVENZIP_ORIGINAL
-#include "Common/Cube/Environments.h"
-#endif
-
 extern bool g_CaseSensitive;
 
 #ifdef UNDER_CE
@@ -989,7 +985,6 @@ static Int32 FindCharset(const NCommandLineParser::CParser &parser, unsigned key
       return pair.CodePage;
   }
 #ifndef SEVENZIP_ORIGINAL
-  Cube::Archive::Environments::SetEncoding((const wchar_t*)name);
   return defaultVal;
 #endif
 }
