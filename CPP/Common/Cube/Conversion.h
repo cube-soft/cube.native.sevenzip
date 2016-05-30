@@ -1,4 +1,4 @@
-ï»¿/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
 ///
 /// Conversion.h
 /// 
@@ -40,13 +40,13 @@ namespace Encoding {
     /// Conversion
     ///
     /// <summary>
-    /// æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’å¤‰æ›ã™ã‚‹ãŸã‚ã®ã‚¯ãƒ©ã‚¹ã§ã™ã€‚
+    /// •¶šƒR[ƒh‚ğ•ÏŠ·‚·‚é‚½‚ß‚ÌƒNƒ‰ƒX‚Å‚·B
     /// </summary>
     ///
     /* --------------------------------------------------------------------- */
     class Conversion {
     public:
-        typedef std::basic_string<char>    system_string;
+        typedef std::basic_string<char>    ascii_string;
         typedef std::basic_string<wchar_t> unicode_string;
 
         /* ----------------------------------------------------------------- */
@@ -54,11 +54,11 @@ namespace Encoding {
         /// Initialize
         ///
         /// <summary>
-        /// åˆæœŸåŒ–ã‚’è¡Œã„ã¾ã™ã€‚
+        /// ‰Šú‰»‚ğs‚¢‚Ü‚·B
         /// </summary>
         ///
         /// <remarks>
-        /// TODO: æœ€çµ‚çš„ã«ã¯ Initialize é–¢æ•°ã‚’ãªãã™æ–¹æ³•ã‚’æ¤œè¨ã™ã‚‹ã€‚
+        /// TODO: ÅI“I‚É‚Í Initialize ŠÖ”‚ğ‚È‚­‚·•û–@‚ğŒŸ“¢‚·‚éB
         /// </remarks>
         ///
         /* ----------------------------------------------------------------- */
@@ -71,11 +71,11 @@ namespace Encoding {
         /// Guess
         ///
         /// <summary>
-        /// æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’æ¨æ¸¬ã—ã¾ã™ã€‚
+        /// •¶šƒR[ƒh‚ğ„‘ª‚µ‚Ü‚·B
         /// </summary>
         ///
         /* ----------------------------------------------------------------- */
-        static int Guess(const system_string& src) {
+        static int Guess(const ascii_string& src) {
             auto result = babel::analyze_base_encoding(src).get_strict_result();
             switch (result) {
             case Ascii:
@@ -97,11 +97,11 @@ namespace Encoding {
         /// ToUnicode
         ///
         /// <summary>
-        /// Unicode ã«å¤‰æ›ã—ã¾ã™ã€‚
+        /// Unicode ‚É•ÏŠ·‚µ‚Ü‚·B
         /// </summary>
         ///
         /* ----------------------------------------------------------------- */
-        static unicode_string ToUnicode(const system_string& src, int encoding) {
+        static unicode_string ToUnicode(const ascii_string& src, int encoding) {
             switch(encoding) {
             case ShiftJis:
                 return babel::sjis_to_unicode(src);
@@ -127,13 +127,26 @@ namespace Encoding {
         /// ToUnicode
         ///
         /// <summary>
-        /// Unicode ã«å¤‰æ›ã—ã¾ã™ã€‚
+        /// Unicode ‚É•ÏŠ·‚µ‚Ü‚·B
         /// </summary>
         ///
         /* ----------------------------------------------------------------- */
-        static unicode_string ToUnicode(const system_string& src) {
+        static unicode_string ToUnicode(const ascii_string& src) {
             auto encoding = Guess(src);
             return ToUnicode(src, encoding);
+        }
+
+        /* ----------------------------------------------------------------- */
+        ///
+        /// ToUtf8
+        ///
+        /// <summary>
+        /// UTF-8 ‚É•ÏŠ·‚µ‚Ü‚·B
+        /// </summary>
+        ///
+        /* ----------------------------------------------------------------- */
+        static ascii_string ToUtf8(const unicode_string& src) {
+            return babel::unicode_to_utf8(src);
         }
 
     private:
@@ -142,11 +155,11 @@ namespace Encoding {
         /// Widen
         ///
         /// <summary>
-        /// string ã‚’ wstring ã«å¤‰æ›ã—ã¾ã™ã€‚
+        /// string ‚ğ wstring ‚É•ÏŠ·‚µ‚Ü‚·B
         /// </summary>
         ///
         /* ----------------------------------------------------------------- */
-        static unicode_string Widen(const system_string& src) {
+        static unicode_string Widen(const ascii_string& src) {
             wchar_t buffer[2048] = {};
             auto result = ::MultiByteToWideChar(CP_ACP, 0, src.c_str(), -1, buffer, sizeof(buffer) / sizeof(wchar_t));
             return (result != 0) ? unicode_string(buffer) : unicode_string();
