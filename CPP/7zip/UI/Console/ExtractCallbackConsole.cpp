@@ -138,9 +138,15 @@ static NSynchronization::CCriticalSection g_CriticalSection;
 #endif
 
 
+#ifdef SEVENZIP_ORIGINAL
 static const char *kTestString    =  "T";
 static const char *kExtractString =  "-";
 static const char *kSkipString    =  ".";
+#else
+static const char *kTestString    = "Testing";
+static const char *kExtractString = "Extracting";
+static const char *kSkipString    = "Skipping";
+#endif
 
 // static const char *kCantAutoRename = "can not create file with auto name\n";
 // static const char *kCantRenameFile = "can not rename existing file\n";
@@ -148,8 +154,13 @@ static const char *kSkipString    =  ".";
 
 static const char *kMemoryExceptionMessage = "Can't allocate required memory!";
 
+#ifdef SEVENZIP_ORIGINAL
 static const char *kExtracting = "Extracting archive: ";
 static const char *kTesting = "Testing archive: ";
+#else
+static const char *kExtracting = "Extract archive: ";
+static const char *kTesting = "Test archive: ";
+#endif
 
 static const char *kEverythingIsOk = "Everything is Ok";
 static const char *kNoFiles = "No files to process";
