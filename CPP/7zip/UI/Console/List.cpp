@@ -20,6 +20,10 @@
 #include "List.h"
 #include "OpenCallbackConsole.h"
 
+#ifndef SEVENZIP_ORIGINAL
+#define CUBEICE_APPENDIX(x) g_StdOut << (x);
+#endif
+
 using namespace NWindows;
 using namespace NCOM;
 
@@ -185,11 +189,19 @@ struct CFieldInfoInit
 
 static const CFieldInfoInit kStandardFieldTable[] =
 {
+#ifdef SEVENZIP_ORIGINAL
   { kpidMTime, "   Date      Time", kLeft, kLeft, 0, 19 },
   { kpidAttrib, "Attr", kRight, kCenter, 1, 5 },
   { kpidSize, "Size", kRight, kRight, 1, 12 },
   { kpidPackSize, "Compressed", kRight, kRight, 1, 12 },
   { kpidPath, "Name", kLeft, kLeft, 2, 24 }
+#else
+  { kpidMTime, "     Date      Time", kLeft, kLeft, 0, 21 },
+  { kpidAttrib, "Attr", kRight, kCenter, 1, 5 },
+  { kpidSize, "Size", kRight, kRight, 1, 12 },
+  { kpidPackSize, "Compressed", kRight, kRight, 1, 12 },
+  { kpidPath, "Name", kLeft, kLeft, 2, 26 }
+#endif
 };
 
 const unsigned kNumSpacesMax = 32; // it must be larger than max CFieldInfoInit.Width
@@ -502,7 +514,13 @@ static void PrintTime(char *dest, const FILETIME *ft)
   FILETIME locTime;
   if (!FileTimeToLocalFileTime(ft, &locTime))
     throw 20121211;
+#ifdef SEVENZIP_ORIGINAL
   ConvertFileTimeToString(locTime, dest, true, true);
+#else
+  dest[ 0] = '"';
+  ConvertFileTimeToString(locTime, dest + 1, true, true);
+  dest[20] = '"'; // yyyy-mm-dd hh:mm:ss
+#endif
 }
 
 #ifndef _SFX
@@ -564,7 +582,9 @@ HRESULT CFieldPrinter::PrintItemInfo(UInt32 index, const CListStat &st)
     {
       if (!techMode)
         g_StdOut << temp;
+      CUBEICE_APPENDIX('"');
       g_StdOut.PrintUString(FilePath, TempAString);
+      CUBEICE_APPENDIX('"');
       if (techMode)
         g_StdOut << MY_ENDL;
       continue;
@@ -641,17 +661,32 @@ HRESULT CFieldPrinter::PrintItemInfo(UInt32 index, const CListStat &st)
       }
       if (f.PropID == kpidAttrib && (prop.vt == VT_EMPTY || prop.vt == VT_UI4))
       {
+#ifndef SEVENZIP_ORIGINAL
+        temp[tempPos] = '"';
+        ++tempPos;
+#endif
         GetAttribString((prop.vt == VT_EMPTY) ? 0 : prop.ulVal, IsDir, techMode, temp + tempPos);
         if (techMode)
           g_StdOut << temp + tempPos;
-        else
+        else {
           tempPos += strlen(temp + tempPos);
+#ifndef SEVENZIP_ORIGINAL
+          temp[tempPos] = '"';
+          ++tempPos;
+#endif
+        }
       }
       else if (prop.vt == VT_EMPTY)
       {
         if (!techMode)
         {
+#ifdef SEVENZIP_ORIGINAL
           PrintSpacesToString(temp + tempPos, width);
+#else
+          temp[tempPos] = '"';
+          PrintSpacesToString(temp + tempPos, width - 2);
+          temp[tempPos + width - 1] = '"';
+#endif
           tempPos += width;
         }
       }
@@ -691,8 +726,17 @@ HRESULT CFieldPrinter::PrintItemInfo(UInt32 index, const CListStat &st)
           g_StdOut << s;
         else
         {
+#ifdef SEVENZIP_ORIGINAL
           PrintStringToString(temp + tempPos, f.TextAdjustment, width, s);
           tempPos += strlen(temp + tempPos);
+#else
+          temp[tempPos] = '"';
+          ++tempPos;
+          PrintStringToString(temp + tempPos, f.TextAdjustment, width, s);
+          tempPos += strlen(temp + tempPos);
+          temp[tempPos] = '"';
+          ++tempPos;
+#endif
         }
       }
     }
@@ -726,7 +770,7 @@ void CFieldPrinter::PrintSum(const CListStat &st, UInt64 numDirs, const char *st
       PrintNumber(f.TextAdjustment, f.Width, st.PackSize);
     else if (f.PropID == kpidMTime)
     {
-      char s[64];
+      char s[64] = {};
       s[0] = 0;
       if (st.MTime.Def)
         PrintTime(s, &st.MTime.Val);
@@ -1234,6 +1278,7 @@ HRESULT ListArchives(CCodecs *codecs,
 
       if (isAltStream && !showAltStreams)
         continue;
+      CUBEICE_APPENDIX("<> ");
       RINOK(fp.PrintItemInfo(i, st));
     }
 
