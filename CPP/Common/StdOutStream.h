@@ -31,6 +31,7 @@ public:
     return *this;
   }
 
+#ifdef SEVENZIP_ORIGINAL
   CStdOutStream & operator<<(const char *s) throw()
   {
     fputs(s, _stream);
@@ -42,7 +43,10 @@ public:
     fputc((unsigned char)c, _stream);
     return *this;
   }
-
+#else
+  CStdOutStream & operator<<(const char *s) throw();
+  CStdOutStream & operator<<(char c) throw();
+#endif
   CStdOutStream & operator<<(Int32 number) throw();
   CStdOutStream & operator<<(Int64 number) throw();
   CStdOutStream & operator<<(UInt32 number) throw();
