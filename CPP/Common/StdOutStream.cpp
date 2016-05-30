@@ -9,13 +9,13 @@
 #include "StringConvert.h"
 #include "UTFConvert.h"
 
-#include <string>
-#include "Cube/Conversion.h"
-
 #ifdef SEVENZIP_ORIGINAL
 static const char kNewLineChar = '\n';
 #else
-static const wchar_t* kNewLineChar =  L"\r\n";
+#include <string>
+#include "Cube/Conversion.h"
+
+static const wchar_t* kNewLineChar =  L"\n";
 #endif
 
 static const char *kFileOpenMode = "wt";
@@ -51,7 +51,9 @@ bool CStdOutStream::Flush() throw()
 
 CStdOutStream & endl(CStdOutStream & outStream) throw()
 {
-  return outStream << kNewLineChar;
+  outStream << kNewLineChar;
+  outStream.Flush();
+  return outStream;
 }
 
 #ifdef SEVENZIP_ORIGINAL
@@ -69,59 +71,6 @@ CStdOutStream & CStdOutStream::operator<<(const wchar_t *s)
   return operator<<((const char *)dest);
 }
 
-#else
-
-CStdOutStream & CStdOutStream::operator<<(char c)
-{
-    char str[2] = {};
-    str[0] = c;
-    str[1] = '\0';
-    *this << str;
-    this->Flush();
-    return *this;
-}
-
-CStdOutStream & CStdOutStream::operator<<(const char *s)
-{
-    std::basic_string<char> str(s);
-
-    if (str.empty()) return *this;
-
-    if (str[0] == '\n') str.insert(0, "\r");
-    for (auto i = str.find("\n"); i != std::string::npos; i = str.find("\n", i + 1)) {
-        if (str[i - 1] != '\r') {
-            str.insert(i, "\r");
-            ++i;
-        }
-    }
-
-    Cube::Encoding::Conversion::Initialize();
-    *this << Cube::Encoding::Conversion::ToUnicode(str).c_str();
-    this->Flush();
-    return *this;
-}
-
-CStdOutStream & CStdOutStream::operator<<(const wchar_t *s)
-{
-    std::basic_string<wchar_t> wstr(s);
-
-    if (wstr.empty()) return *this;
-
-    if (wstr[0] == L'\n') wstr.insert(0, L"\r");
-    for (auto i = wstr.find(L"\n"); i != std::wstring::npos; i = wstr.find(L"\n", i + 1)) {
-        if (wstr[i - 1] != L'\r') {
-            wstr.insert(i, L"\r");
-            ++i;
-        }
-    }
-
-    fwrite(wstr.c_str(), sizeof(wchar_t), wstr.size(), _stream);
-    this->Flush();
-    return *this;
-}
-
-#endif
-
 void StdOut_Convert_UString_to_AString(const UString &s, AString &temp)
 {
     int codePage = g_CodePage;
@@ -133,15 +82,44 @@ void StdOut_Convert_UString_to_AString(const UString &s, AString &temp)
         UnicodeStringToMultiByte2(temp, s, (UINT)codePage);
 }
 
-#ifdef SEVENZIP_ORIGINAL
-
 void CStdOutStream::PrintUString(const UString &s, AString &temp)
 {
-  StdOut_Convert_UString_to_AString(s, temp);
-  *this << (const char *)temp;
+    StdOut_Convert_UString_to_AString(s, temp);
+    *this << (const char *)temp;
 }
 
 #else
+
+CStdOutStream & CStdOutStream::operator<<(char c)
+{
+    char str[2] = {};
+    str[0] = c;
+    str[1] = '\0';
+    return operator<<(str);
+}
+
+CStdOutStream & CStdOutStream::operator<<(const char *s)
+{
+    std::basic_string<char> str(s);
+    if (str.empty()) return *this;
+
+    Cube::Encoding::Conversion::Initialize();
+    return operator<<(Cube::Encoding::Conversion::ToUnicode(str).c_str());
+}
+
+CStdOutStream & CStdOutStream::operator<<(const wchar_t *s)
+{
+    std::basic_string<wchar_t> wstr(s);
+    if (!wstr.empty()) fwrite(wstr.c_str(), sizeof(wchar_t), wstr.size(), _stream);
+    return *this;
+}
+
+void StdOut_Convert_UString_to_AString(const UString &s, AString &temp)
+{
+    auto codePage = g_CodePage;
+    if (codePage == -1) codePage = CP_OEMCP;
+    UnicodeStringToMultiByte2(temp, s, (UINT)codePage);
+}
 
 void CStdOutStream::PrintUString(const UString &s, AString & /*temp */)
 {

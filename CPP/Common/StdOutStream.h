@@ -4,6 +4,8 @@
 #define __COMMON_STD_OUT_STREAM_H
 
 #include <stdio.h>
+#include <io.h>
+#include <fcntl.h>
 
 #include "MyString.h"
 #include "MyTypes.h"
@@ -14,7 +16,11 @@ class CStdOutStream
   bool _streamIsOpen;
 public:
   CStdOutStream(): _stream(0), _streamIsOpen(false) {};
-  CStdOutStream(FILE *stream): _stream(stream), _streamIsOpen(false) {};
+  CStdOutStream(FILE *stream): _stream(stream), _streamIsOpen(false) {
+#ifndef SEVENZIP_ORIGINAL
+      _setmode(_fileno(_stream), _O_BINARY);
+#endif
+  };
   ~CStdOutStream() { Close(); }
 
   // void AttachStdStream(FILE *stream) { _stream  = stream; _streamIsOpen = false; }
