@@ -435,11 +435,19 @@ STDMETHODIMP CExtractCallbackConsole::SetOperationResult(Int32 opRes, Int32 encr
       AString s;
       SetExtractErrorMessage(opRes, encrypted, s);
       
+#ifdef SEVENZIP_ORIGINAL
       *_se << s;
       if (!_currentName.IsEmpty())
         *_se << " : " << _currentName;
       *_se << endl;
       _se->Flush();
+#else
+      *_so << s;
+      if (!_currentName.IsEmpty())
+          *_so << " : " << _currentName;
+      *_so << endl;
+      _so->Flush();
+#endif
     }
   }
   
