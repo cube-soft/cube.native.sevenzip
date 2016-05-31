@@ -24,6 +24,7 @@ void CPercentPrinterState::ClearCurState()
 
 void CPercentPrinter::ClosePrint(bool needFlush)
 {
+#ifdef SEVENZIP_ORIGINAL
   unsigned num = _printedString.Len();
   if (num != 0)
   {
@@ -54,6 +55,7 @@ void CPercentPrinter::ClosePrint(bool needFlush)
   if (needFlush)
     _so->Flush();
   _printedString.Empty();
+#endif
 }
 
 void CPercentPrinter::GetPercents()
@@ -112,8 +114,10 @@ void CPercentPrinter::Print()
 
   _s.Empty();
 
+#ifdef SEVENZIP_ORIGINAL
+
   GetPercents();
-  
+
   if (onlyPercentsChanged && _s == _printedPercents)
     return;
 
@@ -164,11 +168,17 @@ void CPercentPrinter::Print()
     }
     _s += _temp;
   }
-  
+
+#else
+  _s = ":%";
+  GetPercents();
+  _printedPercents = _s;
+#endif
+
   if (_printedString != _s)
   {
     ClosePrint(false);
-    *_so << _s;
+    *_so << _s << endl;
     if (NeedFlush)
       _so->Flush();
     _printedString = _s;
