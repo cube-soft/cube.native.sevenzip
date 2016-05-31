@@ -26,8 +26,8 @@ static NSynchronization::CCriticalSection g_CriticalSection;
 static const wchar_t *kEmptyFileAlias = L"[Content]";
 
 static const char *kOpenArchiveMessage = "Open archive: ";
-static const char *kCreatingArchiveMessage = "Creating archive: ";
-static const char *kUpdatingArchiveMessage = "Updating archive: ";
+static const char *kCreatingArchiveMessage = "Create archive: ";
+static const char *kUpdatingArchiveMessage = "Update archive: ";
 static const char *kScanningMessage = "Scanning the drive:";
 
 static const char *kError = "ERROR: ";
@@ -500,9 +500,9 @@ HRESULT CUpdateCallbackConsole::GetStream(const wchar_t *name, bool /* isDir */,
     if (isAnti)
       s = "Anti";
     else if (mode == NUpdateNotifyOp::kAdd)
-      s = "+";
+      s = "Compressing";
     else
-      s = "U";
+      s = "Compressing";
   }
   else
   {
