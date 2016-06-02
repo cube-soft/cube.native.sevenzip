@@ -8,11 +8,6 @@
 #include <stdlib.h>
 #endif
 
-#ifndef SEVENZIP_ORIGINAL
-#include "Cube/Encoding.h"
-#include "Cube/Conversion.h"
-#endif
-
 static const char k_DefultChar = '_';
 
 #ifdef SEVENZIP_ORIGINAL
@@ -320,6 +315,10 @@ AString UnicodeStringToMultiByte(const UString &src, UINT codePage)
 
 #else
 
+#include "Cube/Encoding.h"
+#include "Cube/Conversion.h"
+#include "Cube/Path.h"
+
 UString MultiByteToUnicodeString(const AString &src, UINT codePage)
 {
     UString dest;
@@ -330,13 +329,14 @@ UString MultiByteToUnicodeString(const AString &src, UINT codePage)
 void MultiByteToUnicodeString2(UString &dest, const AString &src, UINT /* codePage */) {
     Cube::Encoding::Conversion::Initialize();
     auto unicode = Cube::Encoding::Conversion::ToUnicode((const char*)src);
-    dest = unicode.c_str();
+    dest = Cube::Archive::Path::Normalize(unicode).c_str();
 }
 
 void UnicodeStringToMultiByte2(AString &dest, const UString &src, UINT /* codePage */)
 {
     Cube::Encoding::Conversion::Initialize();
-    auto utf8 = Cube::Encoding::Conversion::ToUtf8((const wchar_t*)src);
+    auto normalized = Cube::Archive::Path::Normalize((const wchar_t*)src);
+    auto utf8 = Cube::Encoding::Conversion::ToUtf8(normalized);
     dest = utf8.c_str();
 }
 
