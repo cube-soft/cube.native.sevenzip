@@ -72,6 +72,7 @@ bool CheckUTF8(const char *src, bool allowReduced) throw()
   }
 }
 
+#ifdef SEVENZIP_ORIGINAL
 
 #define _ERROR_UTF8 \
   { if (dest) dest[destPos] = (wchar_t)0xFFFD; destPos++; ok = false; continue; }
@@ -286,3 +287,27 @@ void ConvertUnicodeToUTF8(const UString &src, AString &dest)
   Utf16_To_Utf8(dest.GetBuf((unsigned)destLen), src, src.Ptr(src.Len()));
   dest.ReleaseBuf_SetEnd((unsigned)destLen);
 }
+
+#else
+
+#include "Cube/Encoding.h"
+#include "Cube/Conversion.h"
+#include "Cube/Path.h"
+
+bool ConvertUTF8ToUnicode(const AString &src, UString &dest)
+{
+    Cube::Encoding::Conversion::Initialize();
+    dest = Cube::Archive::Path::Normalize(
+        Cube::Encoding::Conversion::ToUnicode((const char*)src)
+    ).c_str();
+    return true;
+}
+
+void ConvertUnicodeToUTF8(const UString &src, AString &dest) {
+    Cube::Encoding::Conversion::Initialize();
+    dest = Cube::Encoding::Conversion::ToUtf8(
+        Cube::Archive::Path::Normalize((const wchar_t*)src)
+    ).c_str();
+}
+
+#endif // SEVENZIP_ORIGINAL
