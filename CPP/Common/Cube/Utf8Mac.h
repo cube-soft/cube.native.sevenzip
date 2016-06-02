@@ -125,10 +125,10 @@ namespace Encoding {
         static void ReplaceAll(utf8_string& s, const utf8_string& sch, const utf8_string& rep) {
             if (s.empty()) return;
 
-            auto pos = 0u;
-            while ((pos = s.find(sch, pos)) != utf8_string::npos) {
-                s.replace(pos, sch.length(), rep);
-                pos += rep.length();
+            auto pos = s.find(sch);
+            while (pos != utf8_string::npos) {
+                s.replace(pos, sch.size(), rep);
+                pos = s.find(sch, pos + rep.size());
             }
         }
     }; // Utf8Mac
