@@ -7,6 +7,7 @@
 *.exe
 *.pdb
 *.db
+*.opendb
 *.user
 *.aps
 *.pch
@@ -52,4 +53,7 @@ _ReSharper*/
 
 # Office Temp Files
 ~$*
+
+#Nuget
+[Pp]ackages/
 
