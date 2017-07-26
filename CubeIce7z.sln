@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "7z", "CPP\7zip\Bundles\Form
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SFXWin", "CPP\7zip\Bundles\SFXWin\SFXWin.vcxproj", "{3777C31A-37FE-4017-BBAD-6D8EA6394980}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Babel", "CPP\Cube\Babel\Babel.vcxproj", "{59FC40DF-9BC4-4BC4-AF43-E5F1526BE023}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Release|x64 = Release|x64
@@ -21,6 +23,10 @@ Global
 		{3777C31A-37FE-4017-BBAD-6D8EA6394980}.Release|x64.Build.0 = Release|x64
 		{3777C31A-37FE-4017-BBAD-6D8EA6394980}.Release|x86.ActiveCfg = Release|Win32
 		{3777C31A-37FE-4017-BBAD-6D8EA6394980}.Release|x86.Build.0 = Release|Win32
+		{59FC40DF-9BC4-4BC4-AF43-E5F1526BE023}.Release|x64.ActiveCfg = Release|x64
+		{59FC40DF-9BC4-4BC4-AF43-E5F1526BE023}.Release|x64.Build.0 = Release|x64
+		{59FC40DF-9BC4-4BC4-AF43-E5F1526BE023}.Release|x86.ActiveCfg = Release|Win32
+		{59FC40DF-9BC4-4BC4-AF43-E5F1526BE023}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
