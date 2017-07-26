@@ -4,8 +4,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "7z", "CPP\7zip\Bundles\Format7zF\Format7z.vcxproj", "{A6FCE61A-CF1A-4EC7-B8D5-DFD3C9110059}"
+	ProjectSection(ProjectDependencies) = postProject
+		{59FC40DF-9BC4-4BC4-AF43-E5F1526BE023} = {59FC40DF-9BC4-4BC4-AF43-E5F1526BE023}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SFXWin", "CPP\7zip\Bundles\SFXWin\SFXWin.vcxproj", "{3777C31A-37FE-4017-BBAD-6D8EA6394980}"
+	ProjectSection(ProjectDependencies) = postProject
+		{59FC40DF-9BC4-4BC4-AF43-E5F1526BE023} = {59FC40DF-9BC4-4BC4-AF43-E5F1526BE023}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Babel", "CPP\Cube\Babel\Babel.vcxproj", "{59FC40DF-9BC4-4BC4-AF43-E5F1526BE023}"
 EndProject
