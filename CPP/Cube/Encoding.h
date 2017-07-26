@@ -165,6 +165,19 @@ namespace Encoding {
             return babel::unicode_to_utf8(src);
         }
 
+        /* ----------------------------------------------------------------- */
+        ///
+        /// ToShiftJis
+        ///
+        /// <summary>
+        /// Shift_JIS に変換します。
+        /// </summary>
+        ///
+        /* ----------------------------------------------------------------- */
+        static ascii_string ToShiftJis(const unicode_string& src) {
+            return babel::unicode_to_sjis(src);
+        }
+
     private:
         /* ----------------------------------------------------------------- */
         ///

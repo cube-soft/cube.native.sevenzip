@@ -168,28 +168,14 @@ static void UnicodeStringToMultiByte2(AString &dest, const UString &src, UINT co
     }
     */
 
-    unsigned len = WideCharToMultiByte(codePage, 0, src, src.Len(), NULL, 0, NULL, NULL);
-    if (len == 0)
-    {
-      if (GetLastError() != 0)
-        throw 282228;
-    }
-    else
-    {
-      BOOL defUsed = FALSE;
-      bool isUtf = (codePage == CP_UTF8 || codePage == CP_UTF7);
-      // defaultChar = defaultChar;
-      len = WideCharToMultiByte(codePage, 0, src, src.Len(),
-          dest.GetBuf(len), len,
-          (isUtf ? NULL : &defaultChar),
-          (isUtf ? NULL : &defUsed)
-          );
-      if (!isUtf)
-        defaultCharWasUsed = (defUsed != FALSE);
-      if (len == 0)
-        throw 282228;
-      dest.ReleaseBuf_SetEnd(len);
-    }
+    Cube::Encoding::Conversion::Initialize();
+    auto utf8 = codePage == CP_UTF7 ||
+                codePage == CP_UTF8 ||
+                codePage == CP_MACCP;
+    auto cvt  = utf8 ?
+                Cube::Encoding::Conversion::ToUtf8((const wchar_t*)src) :
+                Cube::Encoding::Conversion::ToShiftJis((const wchar_t*)src);
+    dest = cvt.c_str();
   }
 }
 
