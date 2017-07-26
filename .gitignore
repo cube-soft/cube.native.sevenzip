@@ -1,53 +1,51 @@
-#OS junk files
-[Tt]humbs.db
-*.DS_Store
-
-#Visual Studio files
-*.[Oo]bj
-*.exe
-*.pdb
-*.user
-*.aps
-*.pch
-*.vspscc
-*.vssscc
+# Visual Studio files
 *_i.c
 *_p.c
+*.aps
+*.bak
+*.cache
+*.db
+*.dll
+*.exe
+*.ilk
+*.lib
+*.log
 *.ncb
+*.obj
+*.pch
+*.pdb
 *.suo
 *.tlb
 *.tlh
-*.bak
-*.[Cc]ache
-*.ilk
-*.log
-*.lib
+*.user
+*.vspscc
+*.vssscc
 *.sbr
 *.sdf
-*.dll
 *.sh
 *.VisualState.xml
-ipch/
-obj/
-[Bb]in
+UpgradeLog.htm
+
+# Visual Studio directories
+[Bb]in/
+[Bb]uild/
 [Dd]ebug*/
+[Ii]pch/
+[Oo]bj/
 [Rr]elease/
 [Rr]esults/
 [Tt]mp/
 [Tt]emp/
-Ankh.NoLoad
 
-#Tooling
-_ReSharper*/
-*.resharper
-[Tt]est[Rr]esult*
-
-#Project files
-[Bb]uild/
-
-#Subversion files
+# VCS files
 .svn
+.vs
 
-# Office Temp Files
+# Others
 ~$*
-
+*.DS_Store
+*.resharper
+_ReSharper*/
+Ankh.NoLoad
+[Tt]est[Rr]esult*
+[Tt]humbs.db

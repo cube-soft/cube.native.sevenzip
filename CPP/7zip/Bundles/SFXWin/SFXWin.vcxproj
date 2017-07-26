@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName />
+    <SccLocalPath />
+    <ProjectGuid>{3777C31A-37FE-4017-BBAD-6D8EA6394980}</ProjectGuid>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.sfx</TargetExt>
+    <OutDir>$(SolutionDir)$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(Configuration)\$(Platform)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>MinSpace</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <PreprocessorDefinitions>NDEBUG;_SFXWIN32;_WINDOWS;EXTRACT_ONLY;NO_REGISTRY;NO_READ_FROM_CODER;_SFX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <CallingConvention>StdCall</CallingConvention>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\bin\$(Configuration)\$(Platform)\SFXWin.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0411</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\bin\$(Configuration)\$(Platform)\SFXWin.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\C\7zCrc.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\7zCrcOpt.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\Aes.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\AesOpt.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\Alloc.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\Bcj2.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\Bra.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\Bra86.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\BraIA64.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\CpuArch.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\Delta.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\DllSecur.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\Lzma2Dec.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\LzmaDec.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\Ppmd7.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\Ppmd7Dec.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\Sha256.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\Threads.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\CommandLineParser.cpp" />
+    <ClCompile Include="..\..\..\Common\CRC.cpp" />
+    <ClCompile Include="..\..\..\Common\IntToString.cpp" />
+    <ClCompile Include="..\..\..\Common\MyString.cpp" />
+    <ClCompile Include="..\..\..\Common\MyVector.cpp" />
+    <ClCompile Include="..\..\..\Common\NewHandler.cpp" />
+    <ClCompile Include="..\..\..\Common\StringConvert.cpp" />
+    <ClCompile Include="..\..\..\Common\Wildcard.cpp" />
+    <ClCompile Include="..\..\..\Windows\CommonDialog.cpp" />
+    <ClCompile Include="..\..\..\Windows\Control\ComboBox.cpp" />
+    <ClCompile Include="..\..\..\Windows\Control\Dialog.cpp" />
+    <ClCompile Include="..\..\..\Windows\Control\ListView.cpp" />
+    <ClCompile Include="..\..\..\Windows\DLL.cpp" />
+    <ClCompile Include="..\..\..\Windows\ErrorMsg.cpp" />
+    <ClCompile Include="..\..\..\Windows\FileDir.cpp" />
+    <ClCompile Include="..\..\..\Windows\FileFind.cpp" />
+    <ClCompile Include="..\..\..\Windows\FileIO.cpp" />
+    <ClCompile Include="..\..\..\Windows\FileName.cpp" />
+    <ClCompile Include="..\..\..\Windows\PropVariant.cpp" />
+    <ClCompile Include="..\..\..\Windows\PropVariantConv.cpp" />
+    <ClCompile Include="..\..\..\Windows\ResourceString.cpp" />
+    <ClCompile Include="..\..\..\Windows\Shell.cpp" />
+    <ClCompile Include="..\..\..\Windows\Synchronization.cpp" />
+    <ClCompile Include="..\..\..\Windows\Window.cpp" />
+    <ClCompile Include="..\..\Archive\7z\7zDecode.cpp" />
+    <ClCompile Include="..\..\Archive\7z\7zExtract.cpp" />
+    <ClCompile Include="..\..\Archive\7z\7zHandler.cpp" />
+    <ClCompile Include="..\..\Archive\7z\7zIn.cpp" />
+    <ClCompile Include="..\..\Archive\7z\7zRegister.cpp" />
+    <ClCompile Include="..\..\Archive\Common\CoderMixer2.cpp" />
+    <ClCompile Include="..\..\Archive\Common\ItemNameUtils.cpp" />
+    <ClCompile Include="..\..\Archive\Common\MultiStream.cpp" />
+    <ClCompile Include="..\..\Archive\Common\OutStreamWithCRC.cpp" />
+    <ClCompile Include="..\..\Archive\SplitHandler.cpp" />
+    <ClCompile Include="..\..\Common\CreateCoder.cpp" />
+    <ClCompile Include="..\..\Common\CWrappers.cpp" />
+    <ClCompile Include="..\..\Common\FilePathAutoRename.cpp" />
+    <ClCompile Include="..\..\Common\FileStreams.cpp" />
+    <ClCompile Include="..\..\Common\FilterCoder.cpp" />
+    <ClCompile Include="..\..\Common\InBuffer.cpp" />
+    <ClCompile Include="..\..\Common\LimitedStreams.cpp" />
+    <ClCompile Include="..\..\Common\LockedStream.cpp" />
+    <ClCompile Include="..\..\Common\OutBuffer.cpp" />
+    <ClCompile Include="..\..\Common\ProgressUtils.cpp" />
+    <ClCompile Include="..\..\Common\PropId.cpp" />
+    <ClCompile Include="..\..\Common\StreamBinder.cpp" />
+    <ClCompile Include="..\..\Common\StreamObjects.cpp" />
+    <ClCompile Include="..\..\Common\StreamUtils.cpp" />
+    <ClCompile Include="..\..\Common\VirtThread.cpp" />
+    <ClCompile Include="..\..\Compress\Bcj2Coder.cpp" />
+    <ClCompile Include="..\..\Compress\Bcj2Register.cpp" />
+    <ClCompile Include="..\..\Compress\BcjCoder.cpp" />
+    <ClCompile Include="..\..\Compress\BcjRegister.cpp" />
+    <ClCompile Include="..\..\Compress\BranchMisc.cpp" />
+    <ClCompile Include="..\..\Compress\BranchRegister.cpp" />
+    <ClCompile Include="..\..\Compress\CopyCoder.cpp" />
+    <ClCompile Include="..\..\Compress\CopyRegister.cpp" />
+    <ClCompile Include="..\..\Compress\DeltaFilter.cpp" />
+    <ClCompile Include="..\..\Compress\Lzma2Decoder.cpp" />
+    <ClCompile Include="..\..\Compress\Lzma2Register.cpp" />
+    <ClCompile Include="..\..\Compress\LzmaDecoder.cpp" />
+    <ClCompile Include="..\..\Compress\LzmaRegister.cpp" />
+    <ClCompile Include="..\..\Compress\PpmdDecoder.cpp" />
+    <ClCompile Include="..\..\Compress\PpmdRegister.cpp" />
+    <ClCompile Include="..\..\Crypto\7zAes.cpp" />
+    <ClCompile Include="..\..\Crypto\7zAesRegister.cpp" />
+    <ClCompile Include="..\..\Crypto\MyAes.cpp" />
+    <ClCompile Include="..\..\UI\Common\ArchiveExtractCallback.cpp" />
+    <ClCompile Include="..\..\UI\Common\ArchiveOpenCallback.cpp" />
+    <ClCompile Include="..\..\UI\Common\DefaultName.cpp" />
+    <ClCompile Include="..\..\UI\Common\Extract.cpp" />
+    <ClCompile Include="..\..\UI\Common\ExtractingFilePath.cpp" />
+    <ClCompile Include="..\..\UI\Common\LoadCodecs.cpp" />
+    <ClCompile Include="..\..\UI\Common\OpenArchive.cpp" />
+    <ClCompile Include="..\..\UI\Explorer\MyMessages.cpp" />
+    <ClCompile Include="..\..\UI\FileManager\BrowseDialog.cpp" />
+    <ClCompile Include="..\..\UI\FileManager\ComboDialog.cpp" />
+    <ClCompile Include="..\..\UI\FileManager\ExtractCallback.cpp" />
+    <ClCompile Include="..\..\UI\FileManager\FormatUtils.cpp" />
+    <ClCompile Include="..\..\UI\FileManager\OverwriteDialog.cpp" />
+    <ClCompile Include="..\..\UI\FileManager\PasswordDialog.cpp" />
+    <ClCompile Include="..\..\UI\FileManager\ProgressDialog2.cpp" />
+    <ClCompile Include="..\..\UI\FileManager\PropertyName.cpp" />
+    <ClCompile Include="..\..\UI\FileManager\SysIconUtils.cpp" />
+    <ClCompile Include="..\..\UI\GUI\ExtractDialog.cpp" />
+    <ClCompile Include="..\..\UI\GUI\ExtractGUI.cpp" />
+    <ClCompile Include="SfxWin.cpp" />
+    <ClCompile Include="StdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">StdAfx.h</PrecompiledHeaderFile>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\C\7zCrc.h" />
+    <ClInclude Include="..\..\..\..\C\Aes.h" />
+    <ClInclude Include="..\..\..\..\C\Alloc.h" />
+    <ClInclude Include="..\..\..\..\C\Bcj2.h" />
+    <ClInclude Include="..\..\..\..\C\Bra.h" />
+    <ClInclude Include="..\..\..\..\C\Delta.h" />
+    <ClInclude Include="..\..\..\..\C\DllSecur.h" />
+    <ClInclude Include="..\..\..\..\C\Lzma2Dec.h" />
+    <ClInclude Include="..\..\..\..\C\LzmaDec.h" />
+    <ClInclude Include="..\..\..\..\C\Ppmd7.h" />
+    <ClInclude Include="..\..\..\..\C\Threads.h" />
+    <ClInclude Include="..\..\..\Common\CommandLineParser.h" />
+    <ClInclude Include="..\..\..\Common\CRC.h" />
+    <ClInclude Include="..\..\..\Common\IntToString.h" />
+    <ClInclude Include="..\..\..\Common\MyString.h" />
+    <ClInclude Include="..\..\..\Common\MyVector.h" />
+    <ClInclude Include="..\..\..\Common\NewHandler.h" />
+    <ClInclude Include="..\..\..\Common\StringConvert.h" />
+    <ClInclude Include="..\..\..\Common\Wildcard.h" />
+    <ClInclude Include="..\..\..\Windows\CommonDialog.h" />
+    <ClInclude Include="..\..\..\Windows\Control\ComboBox.h" />
+    <ClInclude Include="..\..\..\Windows\Control\Dialog.h" />
+    <ClInclude Include="..\..\..\Windows\Control\ListView.h" />
+    <ClInclude Include="..\..\..\Windows\DLL.h" />
+    <ClInclude Include="..\..\..\Windows\ErrorMsg.h" />
+    <ClInclude Include="..\..\..\Windows\FileDir.h" />
+    <ClInclude Include="..\..\..\Windows\FileFind.h" />
+    <ClInclude Include="..\..\..\Windows\FileIO.h" />
+    <ClInclude Include="..\..\..\Windows\FileName.h" />
+    <ClInclude Include="..\..\..\Windows\PropVariant.h" />
+    <ClInclude Include="..\..\..\Windows\PropVariantConv.h" />
+    <ClInclude Include="..\..\..\Windows\ResourceString.h" />
+    <ClInclude Include="..\..\..\Windows\Shell.h" />
+    <ClInclude Include="..\..\..\Windows\Synchronization.h" />
+    <ClInclude Include="..\..\..\Windows\Window.h" />
+    <ClInclude Include="..\..\Archive\7z\7zDecode.h" />
+    <ClInclude Include="..\..\Archive\7z\7zHandler.h" />
+    <ClInclude Include="..\..\Archive\7z\7zHeader.h" />
+    <ClInclude Include="..\..\Archive\7z\7zIn.h" />
+    <ClInclude Include="..\..\Archive\Common\CoderMixer2.h" />
+    <ClInclude Include="..\..\Archive\Common\ItemNameUtils.h" />
+    <ClInclude Include="..\..\Archive\Common\MultiStream.h" />
+    <ClInclude Include="..\..\Archive\Common\OutStreamWithCRC.h" />
+    <ClInclude Include="..\..\Common\CreateCoder.h" />
+    <ClInclude Include="..\..\Common\CWrappers.h" />
+    <ClInclude Include="..\..\Common\FilePathAutoRename.h" />
+    <ClInclude Include="..\..\Common\FileStreams.h" />
+    <ClInclude Include="..\..\Common\FilterCoder.h" />
+    <ClInclude Include="..\..\Common\InBuffer.h" />
+    <ClInclude Include="..\..\Common\LimitedStreams.h" />
+    <ClInclude Include="..\..\Common\LockedStream.h" />
+    <ClInclude Include="..\..\Common\OutBuffer.h" />
+    <ClInclude Include="..\..\Common\ProgressUtils.h" />
+    <ClInclude Include="..\..\Common\StreamBinder.h" />
+    <ClInclude Include="..\..\Common\StreamObjects.h" />
+    <ClInclude Include="..\..\Common\StreamUtils.h" />
+    <ClInclude Include="..\..\Common\VirtThread.h" />
+    <ClInclude Include="..\..\Compress\BranchMisc.h" />
+    <ClInclude Include="..\..\Crypto\7zAes.h" />
+    <ClInclude Include="..\..\Crypto\MyAes.h" />
+    <ClInclude Include="..\..\UI\Common\ArchiveExtractCallback.h" />
+    <ClInclude Include="..\..\UI\Common\ArchiveOpenCallback.h" />
+    <ClInclude Include="..\..\UI\Common\DefaultName.h" />
+    <ClInclude Include="..\..\UI\Common\Extract.h" />
+    <ClInclude Include="..\..\UI\Common\ExtractingFilePath.h" />
+    <ClInclude Include="..\..\UI\Common\LoadCodecs.h" />
+    <ClInclude Include="..\..\UI\Common\OpenArchive.h" />
+    <ClInclude Include="..\..\UI\Explorer\MyMessages.h" />
+    <ClInclude Include="..\..\UI\FileManager\BrowseDialog.h" />
+    <ClInclude Include="..\..\UI\FileManager\ComboDialog.h" />
+    <ClInclude Include="..\..\UI\FileManager\ExtractCallback.h" />
+    <ClInclude Include="..\..\UI\FileManager\FormatUtils.h" />
+    <ClInclude Include="..\..\UI\FileManager\OverwriteDialog.h" />
+    <ClInclude Include="..\..\UI\FileManager\PasswordDialog.h" />
+    <ClInclude Include="..\..\UI\FileManager\ProgressDialog2.h" />
+    <ClInclude Include="..\..\UI\FileManager\PropertyName.h" />
+    <ClInclude Include="..\..\UI\FileManager\SysIconUtils.h" />
+    <ClInclude Include="..\..\UI\GUI\ExtractDialog.h" />
+    <ClInclude Include="..\..\UI\GUI\ExtractGUI.h" />
+    <ClInclude Include="StdAfx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="7z.ico" />
+    <Image Include="7z1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resource.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
