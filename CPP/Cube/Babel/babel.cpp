@@ -63,11 +63,6 @@
 
 #include "babel.h"
 
-// VC++ 2008 Ç≈ÇÃåxçêâÒî (clown)
-#pragma warning(disable:4309)
-#pragma warning(disable:4065)
-#pragma warning(disable:4101)
-
 /******************************************************************************
 	Å†Å°Å†Å°                      TrickPalace                       Å†Å°Å†Å°
 	Å°Å†Å°Å†              http://www.trickpalace.net/               Å°Å†Å°Å†
