@@ -10,6 +10,9 @@
 
 static const char k_DefultChar = '_';
 
+#include "../Cube/Encoding.h"
+#pragma warning(disable:4100)
+
 #ifdef _WIN32
 
 /*
@@ -71,19 +74,9 @@ void MultiByteToUnicodeString2(UString &dest, const AString &src, UINT codePage)
     d[i] = 0;
     dest.ReleaseBuf_SetLen(i);
     */
-    unsigned len = MultiByteToWideChar(codePage, 0, src, src.Len(), NULL, 0);
-    if (len == 0)
-    {
-      if (GetLastError() != 0)
-        throw 282228;
-    }
-    else
-    {
-      len = MultiByteToWideChar(codePage, 0, src, src.Len(), dest.GetBuf(len), len);
-      if (len == 0)
-        throw 282228;
-      dest.ReleaseBuf_SetEnd(len);
-    }
+    Cube::Encoding::Conversion::Initialize();
+    auto unicode = Cube::Encoding::Conversion::ToUnicode((const char*)src);
+    dest = unicode.c_str();
   }
 }
 

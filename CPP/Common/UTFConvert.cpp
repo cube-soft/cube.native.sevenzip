@@ -9,6 +9,9 @@
 #define _WCHART_IS_16BIT 1
 #endif
 
+#include "../Cube/Encoding.h"
+#pragma warning(disable:4505)
+
 /*
   _UTF8_START(n) - is a base value for start byte (head), if there are (n) additional bytes after start byte
   
@@ -271,18 +274,13 @@ static char *Utf16_To_Utf8(char *dest, const wchar_t *src, const wchar_t *srcLim
 
 bool ConvertUTF8ToUnicode(const AString &src, UString &dest)
 {
-  dest.Empty();
-  size_t destLen = 0;
-  Utf8_To_Utf16(NULL, &destLen, src, src.Ptr(src.Len()));
-  bool res = Utf8_To_Utf16(dest.GetBuf((unsigned)destLen), &destLen, src, src.Ptr(src.Len()));
-  dest.ReleaseBuf_SetEnd((unsigned)destLen);
-  return res;
+  Cube::Encoding::Conversion::Initialize();
+  dest = Cube::Encoding::Conversion::ToUnicode((const char*)src, Cube::Encoding::Utf8).c_str();
+  return true;
 }
 
 void ConvertUnicodeToUTF8(const UString &src, AString &dest)
 {
-  dest.Empty();
-  size_t destLen = Utf16_To_Utf8_Calc(src, src.Ptr(src.Len()));
-  Utf16_To_Utf8(dest.GetBuf((unsigned)destLen), src, src.Ptr(src.Len()));
-  dest.ReleaseBuf_SetEnd((unsigned)destLen);
+  Cube::Encoding::Conversion::Initialize();
+  dest = Cube::Encoding::Conversion::ToUtf8((const wchar_t*)src).c_str();
 }
