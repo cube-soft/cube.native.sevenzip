@@ -34,17 +34,17 @@ STDMETHODIMP CHandler::GetFileTimeType(UInt32 *timeType)
   return S_OK;
 }
 
-static bool IsSimpleAsciiString(const wchar_t *s)
-{
-  for (;;)
-  {
-    wchar_t c = *s++;
-    if (c == 0)
-      return true;
-    if (c < 0x20 || c > 0x7F)
-      return false;
-  }
-}
+//static bool IsSimpleAsciiString(const wchar_t *s)
+//{
+//  for (;;)
+//  {
+//    wchar_t c = *s++;
+//    if (c == 0)
+//      return true;
+//    if (c < 0x20 || c > 0x7F)
+//      return false;
+//  }
+//}
 
 
 static int FindZipMethod(const char *s, const char * const *names, unsigned num)
@@ -321,8 +321,8 @@ STDMETHODIMP CHandler::UpdateItems(ISequentialOutStream *outStream, UInt32 numIt
       if (!m_ForceAesMode)
         options.IsAesMode = thereAreAesUpdates;
 
-      if (!IsSimpleAsciiString(password))
-        return E_INVALIDARG;
+      //if (!IsSimpleAsciiString(password))
+      //  return E_INVALIDARG;
       if (password)
         options.Password = UnicodeStringToMultiByte((LPCOLESTR)password, CP_OEMCP);
       if (options.IsAesMode)
