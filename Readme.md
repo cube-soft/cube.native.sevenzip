@@ -1,14 +1,16 @@
 7-Zip (cube-soft/7z)
 ====
 
-[cube-soft/7z](https://github.com/cube-soft/7z) is a fork repository of the [7-Zip](http://www.7-zip.org/) project customized for Japanese encoding.   
-The repository has three main branch:
+[![AppVeyor](https://ci.appveyor.com/api/projects/status/n2q1nun7oe9cwg1a?svg=true)](https://ci.appveyor.com/project/clown/7z)
+
+[cube-soft/7z](https://github.com/cube-soft/7z) is a fork repository of the [7-Zip](http://www.7-zip.org/) project optimized for Japanese encoding.   
+The repository has three main branches as follow:
 
 * 7z ... Copy the original sources of 7-Zip project without any modifications.
 * unicode ... Modify only project settings for customized version.
 * master ... Customize 7-Zip project.
 
-The C# wrapper of the 7-Zip is available at [Cube.FileSystem](https://github.com/cube-soft/Cube.FileSystem).
+C# wrapper library of the 7-Zip is also available at [Cube.FileSystem](https://github.com/cube-soft/Cube.FileSystem).
 
 ## Libraries
 
@@ -16,8 +18,5 @@ The C# wrapper of the 7-Zip is available at [Cube.FileSystem](https://github.com
 
 ## License
 
-* [GNU LGPLv3](https://github.com/cube-soft/Cube.FileSystem/blob/master/Libraries/SevenZip/License.txt)
-
-## Author
-
-[clown](https://gihub.com/clown) and [CubeSoft, Inc.](http://www.cube-soft.jp/)
+Copyright (c) 2010 [CubeSoft, Inc.](http://www.cube-soft.jp/)
+The project is licensed under the [GNU LGPLv3](https://github.com/cube-soft/Cube.FileSystem/blob/master/Libraries/SevenZip/License.txt).
