@@ -1,35 +1,20 @@
-# --------------------------------------------------------------------------- #
-# general configuration
-# --------------------------------------------------------------------------- #
 version: 0.8.0.{build}
 branches:
-  only:
-    - master
+    only:
+        - master
 skip_tags: true
-
-# --------------------------------------------------------------------------- #
-# environment configuration
-# --------------------------------------------------------------------------- #
 clone_folder: C:\Cube\7z
 image: Visual Studio 2017
-
-# --------------------------------------------------------------------------- #
-# build configuration
-# --------------------------------------------------------------------------- #
 platform: Win32
 configuration: Release
 build: 
-  parallel: true
-  project: CubeIce7z.sln
-  publish_nuget: true
-  verbosity: normal
+    parallel: true
+    project: CubeIce7z.sln
+    publish_nuget: true
+    verbosity: normal
 after_build:
-  - copy /Y Release\Win32\7z.dll 7z.dll
-  - copy /Y Release\Win32\7z.sfx 7z.sfx
-
-# --------------------------------------------------------------------------- #
-# artifacts configuration
-# --------------------------------------------------------------------------- #
+    - copy /Y Release\Win32\7z.dll 7z.dll
+    - copy /Y Release\Win32\7z.sfx 7z.sfx
 artifacts:
     - path: 7z.dll
       type: file
