@@ -12,11 +12,12 @@ The repository has three main branches as follow:
 
 C# wrapper library of the 7-Zip is also available at [Cube.FileSystem](https://github.com/cube-soft/Cube.FileSystem).
 
-## Libraries
+## Thanks
 
-* [babel](http://tricklib.com/cxx/ex/babel/) ... Including the repository.
+* [babel](http://tricklib.com/cxx/ex/babel/) ... Included in the repository.
 
 ## License
 
-Copyright (c) 2010 [CubeSoft, Inc.](http://www.cube-soft.jp/)
+Copyright (c) 2010 [CubeSoft, Inc.](http://www.cube-soft.jp/)  
+Copyright (c) 2016 [Igor Pavlov.](http://www.7-zip.org/)  
 The project is licensed under the [GNU LGPLv3](https://github.com/cube-soft/Cube.FileSystem/blob/master/Libraries/SevenZip/License.txt).
