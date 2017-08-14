@@ -341,7 +341,7 @@ STDMETHODIMP CHandler::Open(IInStream *inStream,
 
   CInArchive archive;
   CMyComPtr<IArchiveOpenVolumeCallback> openVolumeCallback;
-  callback->QueryInterface(IID_IArchiveOpenVolumeCallback, (void **)&openVolumeCallback);
+  if (callback) callback->QueryInterface(IID_IArchiveOpenVolumeCallback, (void **)&openVolumeCallback);
   
   CMyComPtr<IInStream> nextStream = inStream;
   bool prevChecked = false;
@@ -420,7 +420,7 @@ STDMETHODIMP CHandler::Open(IInStream *inStream,
         }
       }
 
-      RINOK(callback->SetCompleted(&numItems, NULL));
+      if (callback) RINOK(callback->SetCompleted(&numItems, NULL));
         
       nextStream = NULL;
       
