@@ -9,6 +9,7 @@
 #define _WCHART_IS_16BIT 1
 #endif
 
+#include "../Cube/Log.h"
 #include "../Cube/Encoding.h"
 #pragma warning(disable:4505)
 
@@ -275,7 +276,11 @@ static char *Utf16_To_Utf8(char *dest, const wchar_t *src, const wchar_t *srcLim
 bool ConvertUTF8ToUnicode(const AString &src, UString &dest)
 {
   Cube::Encoding::Conversion::Initialize();
-  dest = Cube::Encoding::Conversion::ToUnicode((const char*)src, Cube::Encoding::Utf8).c_str();
+  auto code = Cube::Encoding::Conversion::Guess((const char*)src);
+  if (code != Cube::Encoding::Utf8) CUBE_LOG << _T("Encoding:") << code << _T(" (probably not UTF-8)");
+  dest = code == Cube::Encoding::ShiftJis ?
+         Cube::Encoding::Conversion::ToUnicode((const char*)src, Cube::Encoding::ShiftJis).c_str() :
+         Cube::Encoding::Conversion::ToUnicode((const char*)src, Cube::Encoding::Utf8).c_str();
   return true;
 }
 
