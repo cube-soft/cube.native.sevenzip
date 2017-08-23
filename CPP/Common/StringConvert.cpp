@@ -75,8 +75,11 @@ void MultiByteToUnicodeString2(UString &dest, const AString &src, UINT codePage)
     dest.ReleaseBuf_SetLen(i);
     */
     Cube::Encoding::Conversion::Initialize();
-    auto unicode = Cube::Encoding::Conversion::ToUnicode((const char*)src);
-    dest = unicode.c_str();
+    auto code = Cube::Encoding::Conversion::Guess((const char*)src);
+    auto cvt  = code != Cube::Encoding::Unknown ?
+                Cube::Encoding::Conversion::ToUnicode((const char*)src) :
+                Cube::Encoding::Conversion::Widen((const char*)src, codePage);
+    dest = cvt.c_str();
   }
 }
 

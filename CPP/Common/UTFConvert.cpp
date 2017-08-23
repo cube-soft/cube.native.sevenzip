@@ -278,9 +278,7 @@ bool ConvertUTF8ToUnicode(const AString &src, UString &dest)
   Cube::Encoding::Conversion::Initialize();
   auto code = Cube::Encoding::Conversion::Guess((const char*)src);
   if (code != Cube::Encoding::Utf8) CUBE_LOG << _T("Encoding:") << code << _T(" (probably not UTF-8)");
-  dest = code == Cube::Encoding::ShiftJis ?
-         Cube::Encoding::Conversion::ToUnicode((const char*)src, Cube::Encoding::ShiftJis).c_str() :
-         Cube::Encoding::Conversion::ToUnicode((const char*)src, Cube::Encoding::Utf8).c_str();
+  dest = Cube::Encoding::Conversion::ToUnicode((const char*)src, code).c_str();
   return true;
 }
 
