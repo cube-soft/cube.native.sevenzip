@@ -15,65 +15,11 @@ static const char k_DefultChar = '_';
 
 #ifdef _WIN32
 
-/*
-MultiByteToWideChar(CodePage, DWORD dwFlags,
-    LPCSTR lpMultiByteStr, int cbMultiByte,
-    LPWSTR lpWideCharStr, int cchWideChar)
-
-  if (cbMultiByte == 0)
-    return: 0. ERR: ERROR_INVALID_PARAMETER
-
-  if (cchWideChar == 0)
-    return: the required buffer size in characters.
-
-  if (supplied buffer size was not large enough)
-    return: 0. ERR: ERROR_INSUFFICIENT_BUFFER
-    The number of filled characters in lpWideCharStr can be smaller than cchWideChar (if last character is complex)
-
-  If there are illegal characters:
-    if MB_ERR_INVALID_CHARS is set in dwFlags:
-      - the function stops conversion on illegal character.
-      - Return: 0. ERR: ERROR_NO_UNICODE_TRANSLATION.
-    
-    if MB_ERR_INVALID_CHARS is NOT set in dwFlags:
-      before Vista: illegal character is dropped (skipped). WinXP-64: GetLastError() returns 0.
-      in Vista+:    illegal character is not dropped (MSDN). Undocumented: illegal
-                    character is converted to U+FFFD, which is REPLACEMENT CHARACTER.
-*/
-
-
 void MultiByteToUnicodeString2(UString &dest, const AString &src, UINT codePage)
 {
   dest.Empty();
-  if (src.IsEmpty())
-    return;
+  if (!src.IsEmpty())
   {
-    /*
-    wchar_t *d = dest.GetBuf(src.Len());
-    const char *s = (const char *)src;
-    unsigned i;
-    
-    for (i = 0;;)
-    {
-      Byte c = (Byte)s[i];
-      if (c >= 0x80 || c == 0)
-        break;
-      d[i++] = (wchar_t)c;
-    }
-
-    if (i != src.Len())
-    {
-      unsigned len = MultiByteToWideChar(codePage, 0, s + i,
-          src.Len() - i, d + i,
-          src.Len() + 1 - i);
-      if (len == 0)
-        throw 282228;
-      i += len;
-    }
-
-    d[i] = 0;
-    dest.ReleaseBuf_SetLen(i);
-    */
     Cube::Encoding::Conversion::Initialize();
     auto code = Cube::Encoding::Conversion::Guess((const char*)src);
     auto cvt  = code != Cube::Encoding::Unknown ?
@@ -83,94 +29,12 @@ void MultiByteToUnicodeString2(UString &dest, const AString &src, UINT codePage)
   }
 }
 
-/*
-  int WideCharToMultiByte(
-      UINT CodePage, DWORD dwFlags,
-      LPCWSTR lpWideCharStr, int cchWideChar,
-      LPSTR lpMultiByteStr, int cbMultiByte,
-      LPCSTR lpDefaultChar, LPBOOL lpUsedDefaultChar);
-
-if (lpDefaultChar == NULL),
-  - it uses system default value.
-
-if (CodePage == CP_UTF7 || CodePage == CP_UTF8)
-  if (lpDefaultChar != NULL || lpUsedDefaultChar != NULL)
-    return: 0. ERR: ERROR_INVALID_PARAMETER.
-
-The function operates most efficiently, if (lpDefaultChar == NULL && lpUsedDefaultChar == NULL)
-
-*/
-
 static void UnicodeStringToMultiByte2(AString &dest, const UString &src, UINT codePage, char defaultChar, bool &defaultCharWasUsed)
 {
   dest.Empty();
   defaultCharWasUsed = false;
-  if (src.IsEmpty())
-    return;
+  if (!src.IsEmpty())
   {
-    /*
-    unsigned numRequiredBytes = src.Len() * 2;
-    char *d = dest.GetBuf(numRequiredBytes);
-    const wchar_t *s = (const wchar_t *)src;
-    unsigned i;
-    
-    for (i = 0;;)
-    {
-      wchar_t c = s[i];
-      if (c >= 0x80 || c == 0)
-        break;
-      d[i++] = (char)c;
-    }
-    
-    if (i != src.Len())
-    {
-      BOOL defUsed = FALSE;
-      defaultChar = defaultChar;
-
-      bool isUtf = (codePage == CP_UTF8 || codePage == CP_UTF7);
-      unsigned len = WideCharToMultiByte(codePage, 0, s + i, src.Len() - i,
-          d + i, numRequiredBytes + 1 - i,
-          (isUtf ? NULL : &defaultChar),
-          (isUtf ? NULL : &defUsed));
-      defaultCharWasUsed = (defUsed != FALSE);
-      if (len == 0)
-        throw 282229;
-      i += len;
-    }
-
-    d[i] = 0;
-    dest.ReleaseBuf_SetLen(i);
-    */
-
-    /*
-    if (codePage != CP_UTF7)
-    {
-      const wchar_t *s = (const wchar_t *)src;
-      unsigned i;
-      for (i = 0;; i++)
-      {
-        wchar_t c = s[i];
-        if (c >= 0x80 || c == 0)
-          break;
-      }
-      
-      if (s[i] == 0)
-      {
-        char *d = dest.GetBuf(src.Len());
-        for (i = 0;;)
-        {
-          wchar_t c = s[i];
-          if (c == 0)
-            break;
-          d[i++] = (char)c;
-        }
-        d[i] = 0;
-        dest.ReleaseBuf_SetLen(i);
-        return;
-      }
-    }
-    */
-
     Cube::Encoding::Conversion::Initialize();
     auto utf8 = codePage == CP_UTF7 ||
                 codePage == CP_UTF8 ||
@@ -181,19 +45,6 @@ static void UnicodeStringToMultiByte2(AString &dest, const UString &src, UINT co
     dest = cvt.c_str();
   }
 }
-
-/*
-#ifndef UNDER_CE
-AString SystemStringToOemString(const CSysString &src)
-{
-  AString dest;
-  const unsigned len = src.Len() * 2;
-  CharToOem(src, dest.GetBuf(len));
-  dest.ReleaseBuf_CalcLen(len);
-  return dest;
-}
-#endif
-*/
 
 #else
 
