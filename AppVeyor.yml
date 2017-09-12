@@ -5,7 +5,7 @@ branches:
 skip_tags: true
 clone_folder: C:\Cube\7z
 image: Visual Studio 2017
-platform: Win32
+platform: x64
 configuration: Release
 build: 
     parallel: true
@@ -13,8 +13,8 @@ build:
     publish_nuget: true
     verbosity: normal
 after_build:
-    - copy /Y Release\Win32\7z.dll 7z.dll
-    - copy /Y Release\Win32\7z.sfx 7z.sfx
+    - copy /Y Release\x64\7z.dll 7z.dll
+    - copy /Y Release\x64\7z.sfx 7z.sfx
 artifacts:
     - path: 7z.dll
       type: file
