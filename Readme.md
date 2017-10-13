@@ -10,7 +10,7 @@ The repository has three main branches as follow:
 * unicode ... Modify only project settings for customized version.
 * master ... Customize 7-Zip project.
 
-C# wrapper library of the 7-Zip is also available at [Cube.FileSystem](https://github.com/cube-soft/Cube.FileSystem).
+C# wrapper library of the 7-Zip is also available at [Cube.FileSystem.SevenZip](https://github.com/cube-soft/Cube.FileSystem.SevenZip).
 
 ## Thanks
 
