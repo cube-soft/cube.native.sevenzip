@@ -20,7 +20,6 @@ void MultiByteToUnicodeString2(UString &dest, const AString &src, UINT codePage)
   dest.Empty();
   if (!src.IsEmpty())
   {
-    Cube::Encoding::Conversion::Initialize();
     auto code = Cube::Encoding::Conversion::Guess((const char*)src);
     auto cvt  = code != Cube::Encoding::Unknown ?
                 Cube::Encoding::Conversion::ToUnicode((const char*)src) :
@@ -35,7 +34,6 @@ static void UnicodeStringToMultiByte2(AString &dest, const UString &src, UINT co
   defaultCharWasUsed = false;
   if (!src.IsEmpty())
   {
-    Cube::Encoding::Conversion::Initialize();
     auto utf8 = codePage == CP_UTF7 ||
                 codePage == CP_UTF8 ||
                 codePage == CP_MACCP;

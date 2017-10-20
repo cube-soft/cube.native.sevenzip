@@ -67,23 +67,6 @@ public:
 
     /* --------------------------------------------------------------------- */
     ///
-    /// Initialize
-    ///
-    /// <summary>
-    /// 初期化を行います。
-    /// </summary>
-    ///
-    /// <remarks>
-    /// TODO: 最終的には Initialize 関数をなくす方法を検討する。
-    /// </remarks>
-    ///
-    /* --------------------------------------------------------------------- */
-    static void Initialize() {
-        static Details::Initializer initializer;
-    }
-
-    /* --------------------------------------------------------------------- */
-    ///
     /// Guess
     ///
     /// <summary>
@@ -92,6 +75,7 @@ public:
     ///
     /* --------------------------------------------------------------------- */
     static int Guess(const ascii_string& src) {
+        Initialize();
         auto result = babel::analyze_base_encoding(src).get_strict_result();
         switch (result) {
         case babel::base_encoding::ansi:
@@ -116,6 +100,7 @@ public:
     ///
     /* --------------------------------------------------------------------- */
     static unicode_string ToUnicode(const ascii_string& src, int encoding) {
+        Initialize();
         switch(encoding) {
         case Ascii:
         case ShiftJis:
@@ -160,6 +145,7 @@ public:
     ///
     /* --------------------------------------------------------------------- */
     static ascii_string ToUtf8(const unicode_string& src) {
+        Initialize();
         return babel::unicode_to_utf8(src);
     }
 
@@ -173,6 +159,7 @@ public:
     ///
     /* --------------------------------------------------------------------- */
     static ascii_string ToShiftJis(const unicode_string& src) {
+        Initialize();
         return babel::unicode_to_sjis(src);
     }
     
@@ -206,6 +193,26 @@ public:
         auto count  = static_cast<int>(sizeof(buffer) / sizeof(buffer[0]));
         auto result = WideCharToMultiByte(cp, 0, src.c_str(), -1, buffer, count, nullptr, nullptr);
         return result != 0 ? ascii_string(buffer) : ascii_string();
+    }
+
+private:
+    /* --------------------------------------------------------------------- */
+    ///
+    /// Initialize
+    ///
+    /// <summary>
+    /// ライブラリの初期化を実行します。
+    /// </summary>
+    ///
+    /// <remarks>
+    /// babel で定義されているクラス、関数を利用する際には、最初にこの
+    /// メンバ関数を実行して下さい。
+    /// </remarks>
+    ///
+    ///
+    /* --------------------------------------------------------------------- */
+    static void Initialize() {
+        static Details::Initializer initializer;
     }
 }; // Conversion
 

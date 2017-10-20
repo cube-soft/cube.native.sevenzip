@@ -275,8 +275,6 @@ static char *Utf16_To_Utf8(char *dest, const wchar_t *src, const wchar_t *srcLim
 
 bool ConvertUTF8ToUnicode(const AString &src, UString &dest)
 {
-  Cube::Encoding::Conversion::Initialize();
-
   auto code = CheckUTF8(src) ?
               Cube::Encoding::Utf8 :
               Cube::Encoding::Conversion::Guess((const char*)src);
@@ -290,6 +288,5 @@ bool ConvertUTF8ToUnicode(const AString &src, UString &dest)
 
 void ConvertUnicodeToUTF8(const UString &src, AString &dest)
 {
-  Cube::Encoding::Conversion::Initialize();
   dest = Cube::Encoding::Conversion::ToUtf8((const wchar_t*)src).c_str();
 }
