@@ -367,6 +367,9 @@
       <Filter>C</Filter>
     </ClCompile>
     <ClCompile Include="SfxWin.cpp" />
+    <ClCompile Include="..\..\..\Common\UTFConvert.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdAfx.h">

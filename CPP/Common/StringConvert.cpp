@@ -10,6 +10,7 @@
 
 static const char k_DefultChar = '_';
 
+#include "UTFConvert.h"
 #include "../Cube/Encoding.h"
 #pragma warning(disable:4100)
 
@@ -20,11 +21,14 @@ void MultiByteToUnicodeString2(UString &dest, const AString &src, UINT codePage)
   dest.Empty();
   if (!src.IsEmpty())
   {
-    auto code = Cube::Encoding::Conversion::Guess((const char*)src);
-    auto cvt  = code != Cube::Encoding::Unknown ?
-                Cube::Encoding::Conversion::ToUnicode((const char*)src) :
-                Cube::Encoding::Conversion::Widen((const char*)src, codePage);
-    dest = cvt.c_str();
+      auto code = CheckUTF8(src) ?
+                  Cube::Encoding::Utf8 :
+                  Cube::Encoding::Conversion::Guess((const char*)src);
+      auto cvt  = code != Cube::Encoding::Unknown ?
+                  Cube::Encoding::Conversion::ToUnicode((const char*)src, code) :
+                  Cube::Encoding::Conversion::Widen((const char*)src, codePage);
+
+      dest = cvt.c_str();
   }
 }
 

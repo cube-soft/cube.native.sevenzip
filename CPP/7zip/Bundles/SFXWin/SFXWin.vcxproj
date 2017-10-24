@@ -240,6 +240,7 @@
     <ClCompile Include="..\..\..\Common\MyVector.cpp" />
     <ClCompile Include="..\..\..\Common\NewHandler.cpp" />
     <ClCompile Include="..\..\..\Common\StringConvert.cpp" />
+    <ClCompile Include="..\..\..\Common\UTFConvert.cpp" />
     <ClCompile Include="..\..\..\Common\Wildcard.cpp" />
     <ClCompile Include="..\..\..\Windows\CommonDialog.cpp" />
     <ClCompile Include="..\..\..\Windows\Control\ComboBox.cpp" />
