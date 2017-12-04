@@ -278,10 +278,6 @@ bool ConvertUTF8ToUnicode(const AString &src, UString &dest)
   auto code = CheckUTF8(src) ?
               Cube::Encoding::Utf8 :
               Cube::Encoding::Conversion::Guess((const char*)src);
-  auto utf8 = code == Cube::Encoding::Ascii || code == Cube::Encoding::Utf8;
-
-  if (!utf8) CUBE_LOG << _T("Encoding:") << code << _T(" (probably not UTF-8)");
-
   auto cvt  = code != Cube::Encoding::Unknown ?
               Cube::Encoding::Conversion::ToUnicode((const char*)src, code) :
               Cube::Encoding::Conversion::Widen((const char*)src);
