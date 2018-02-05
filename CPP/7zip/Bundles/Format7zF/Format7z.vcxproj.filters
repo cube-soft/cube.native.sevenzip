@@ -923,6 +923,9 @@
     <ClCompile Include="..\..\..\Windows\TimeUtils.cpp">
       <Filter>Windows</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Compress\LzfseDecoder.cpp">
+      <Filter>Compress</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc">
@@ -1577,6 +1580,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Windows\TimeUtils.h">
       <Filter>Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Compress\LzfseDecoder.h">
+      <Filter>Compress</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

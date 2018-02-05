@@ -713,6 +713,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\..\Compress\LzfseDecoder.cpp" />
     <ClCompile Include="..\..\Compress\LzhDecoder.cpp" />
     <ClCompile Include="..\..\Compress\Lzma2Decoder.cpp" />
     <ClCompile Include="..\..\Compress\Lzma2Encoder.cpp" />
@@ -1083,6 +1084,7 @@
     <ClInclude Include="..\..\Compress\DeflateEncoder.h" />
     <ClInclude Include="..\..\Compress\HuffmanDecoder.h" />
     <ClInclude Include="..\..\Compress\ImplodeDecoder.h" />
+    <ClInclude Include="..\..\Compress\LzfseDecoder.h" />
     <ClInclude Include="..\..\Compress\LzhDecoder.h" />
     <ClInclude Include="..\..\Compress\Lzma2Decoder.h" />
     <ClInclude Include="..\..\Compress\Lzma2Encoder.h" />
