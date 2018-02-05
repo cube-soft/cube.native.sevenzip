@@ -1,4 +1,4 @@
-version: 18.0.1.{build}
+version: 18.1.1.{build}
 branches:
     only:
         - master
@@ -7,7 +7,7 @@ clone_folder: C:\Cube\7z
 image: Visual Studio 2017
 platform: x64
 configuration: Release
-build: 
+build:
     parallel: true
     project: CubeIce7z.sln
     publish_nuget: true
