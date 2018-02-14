@@ -28,11 +28,12 @@ void MultiByteToUnicodeString2(UString &dest, const AString &src, UINT codePage)
                   Cube::Encoding::Conversion::ToUnicode((const char*)src, code) :
                   Cube::Encoding::Conversion::Widen((const char*)src, codePage);
 
-      if (code != Cube::Encoding::Utf8 &&
-          code != Cube::Encoding::ShiftJis &&
+      if ((code == Cube::Encoding::Jis ||
+           code == Cube::Encoding::EucJp) &&
           !Cube::Encoding::Validator::IsValidPath(cvt))
       {
-          cvt = Cube::Encoding::Conversion::Widen((const char*)src, codePage);
+          code = Cube::Encoding::ShiftJis;
+          cvt  = Cube::Encoding::Conversion::ToUnicode((const char*)src, code);
       }
 
       dest = cvt.c_str();
