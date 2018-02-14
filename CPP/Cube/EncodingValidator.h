@@ -1,7 +1,7 @@
 ﻿/* ------------------------------------------------------------------------- */
 ///
 /// Copyright (c) 2010 CubeSoft, Inc.
-/// 
+///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
 /// You may obtain a copy of the License at
@@ -24,20 +24,45 @@ namespace Encoding {
 
 /* ------------------------------------------------------------------------- */
 ///
-/// Mac
+/// Validator
 ///
 /// <summary>
-/// UTF8-MAC エンコーディングに関する処理を行うクラスです。
+/// エンコーディングに関するバリデーションを行うクラスです。
 /// </summary>
 ///
 /* ------------------------------------------------------------------------- */
-class Mac {
+class Validator {
 public:
     typedef std::basic_string<char> utf8_string;
+    typedef std::basic_string<wchar_t> unicode_string;
 
     /* --------------------------------------------------------------------- */
     ///
-    /// Normalize
+    /// IsValidPath
+    ///
+    /// <summary>
+    /// 正常なパスかどうかを判別します。
+    /// </summary>
+    ///
+    /* --------------------------------------------------------------------- */
+    static bool IsValidPath(const unicode_string& src) {
+        for (auto c : src) {
+            auto n = static_cast<uint16_t>(c);
+            if (n <= 31 ||
+                n == 34 || // "
+                n == 42 || // *
+                n == 60 || // <
+                n == 62 || // >
+                n == 63 || // ?
+                n == 124   // |
+            ) return false;
+        }
+        return true;
+    }
+
+    /* --------------------------------------------------------------------- */
+    ///
+    /// NfdToNfc
     ///
     /// <summary>
     /// NFD を NFC に正規化します。
@@ -49,7 +74,7 @@ public:
     /// </remarks>
     ///
     /* --------------------------------------------------------------------- */
-    static void Normalize(utf8_string& s) {
+    static void NfdToNfc(utf8_string& s) {
         static const char *utf8_mac_kana[][2] = {
             { "\xE3\x81\x8B\xE3\x82\x99", "\xE3\x81\x8C" },		// が
             { "\xE3\x81\x8D\xE3\x82\x99", "\xE3\x81\x8E" },		// ぎ
@@ -105,12 +130,11 @@ public:
             { "\xE3\x82\xA6\xE3\x82\x99", "\xE3\x83\xB4" },		// ヴ
         };
 
-        // hack
         if (s.size() < 6) return;
-        if (s.find("\xE3\x82\x99") == utf8_string::npos &&
-            s.find("\xE3\x82\x9A") == utf8_string::npos) return;
 
         for (auto i = 0u; i < sizeof(utf8_mac_kana) / sizeof(utf8_mac_kana[0]); ++i) {
+            if (s.find("\xE3\x82\x99") == utf8_string::npos &&
+                s.find("\xE3\x82\x9A") == utf8_string::npos) return; // hack
             ReplaceAll(s, utf8_mac_kana[i][0], utf8_mac_kana[i][1]);
         }
     }

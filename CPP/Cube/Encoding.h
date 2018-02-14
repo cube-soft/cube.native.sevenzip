@@ -1,7 +1,7 @@
 ﻿/* ------------------------------------------------------------------------- */
 ///
 /// Copyright (c) 2010 CubeSoft, Inc.
-/// 
+///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
 /// You may obtain a copy of the License at
@@ -16,11 +16,12 @@
 ///
 /* ------------------------------------------------------------------------- */
 #pragma once
+#define __USING_SJIS__
 
 #include <string>
 #include <winnls.h>
 #include "babel/babel.h"
-#include "EncodingMac.h"
+#include "EncodingValidator.h"
 
 namespace Cube {
 namespace Encoding {
@@ -112,7 +113,7 @@ public:
         case Utf8:
         {
             auto copy = src;
-            Mac::Normalize(copy);
+            Validator::NfdToNfc(copy);
             return babel::utf8_to_unicode(copy);
         }
         case Unicode:
@@ -162,7 +163,7 @@ public:
         Initialize();
         return babel::unicode_to_sjis(src);
     }
-    
+
     /* --------------------------------------------------------------------- */
     ///
     /// Widen

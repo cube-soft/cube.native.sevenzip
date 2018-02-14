@@ -9,13 +9,13 @@
 #define _WCHART_IS_16BIT 1
 #endif
 
-#include "../Cube/Log.h"
 #include "../Cube/Encoding.h"
+#include "StringConvert.h"
 #pragma warning(disable:4505)
 
 /*
   _UTF8_START(n) - is a base value for start byte (head), if there are (n) additional bytes after start byte
-  
+
   n : _UTF8_START(n) : Bits of code point
 
   0 : 0x80 :    : unused
@@ -53,12 +53,12 @@ bool CheckUTF8(const char *src, bool allowReduced) throw()
       continue;
     if (c < 0xC0)   // (c < 0xC0 + 2) // if we support only optimal encoding chars
       return false;
-    
+
     unsigned numBytes;
     _UTF8_HEAD_PARSE
     else
       return false;
-    
+
     UInt32 val = c;
 
     do
@@ -70,7 +70,7 @@ bool CheckUTF8(const char *src, bool allowReduced) throw()
       val |= (c2 - 0x80);
     }
     while (--numBytes);
-    
+
     if (val >= 0x110000)
       return false;
   }
@@ -109,7 +109,7 @@ static bool Utf8_To_Utf16(wchar_t *dest, size_t *destLen, const char *src, const
     _UTF8_HEAD_PARSE
     else
       _ERROR_UTF8
-    
+
     UInt32 val = c;
 
     do
@@ -162,9 +162,9 @@ static size_t Utf16_To_Utf8_Calc(const wchar_t *src, const wchar_t *srcLim)
   {
     if (src == srcLim)
       return size;
-    
+
     UInt32 val = *src++;
-   
+
     if (val < 0x80)
       continue;
 
@@ -186,9 +186,9 @@ static size_t Utf16_To_Utf8_Calc(const wchar_t *src, const wchar_t *srcLim)
     }
 
     #ifdef _WCHART_IS_16BIT
-    
+
     size += 2;
-    
+
     #else
 
          if (val < _UTF8_RANGE(2)) size += 2;
@@ -196,7 +196,7 @@ static size_t Utf16_To_Utf8_Calc(const wchar_t *src, const wchar_t *srcLim)
     else if (val < _UTF8_RANGE(4)) size += 4;
     else if (val < _UTF8_RANGE(5)) size += 5;
     else                           size += 6;
-    
+
     #endif
   }
 }
@@ -207,9 +207,9 @@ static char *Utf16_To_Utf8(char *dest, const wchar_t *src, const wchar_t *srcLim
   {
     if (src == srcLim)
       return dest;
-    
+
     UInt32 val = *src++;
-    
+
     if (val < 0x80)
     {
       *dest++ = (char)val;
@@ -239,7 +239,7 @@ static char *Utf16_To_Utf8(char *dest, const wchar_t *src, const wchar_t *srcLim
         continue;
       }
     }
-    
+
     #ifndef _WCHART_IS_16BIT
     if (val < _UTF8_RANGE(2))
     #endif
@@ -250,7 +250,7 @@ static char *Utf16_To_Utf8(char *dest, const wchar_t *src, const wchar_t *srcLim
       dest += 3;
       continue;
     }
-    
+
     #ifndef _WCHART_IS_16BIT
 
     UInt32 b;
@@ -259,9 +259,9 @@ static char *Utf16_To_Utf8(char *dest, const wchar_t *src, const wchar_t *srcLim
     else if (val < _UTF8_RANGE(4)) { numBits = 6 * 4; b = _UTF8_HEAD(4, val); }
     else if (val < _UTF8_RANGE(5)) { numBits = 6 * 5; b = _UTF8_HEAD(5, val); }
     else                           { numBits = 6 * 6; b = _UTF8_START(6); }
-    
+
     *dest++ = (Byte)b;
-    
+
     do
     {
       numBits -= 6;
@@ -275,14 +275,7 @@ static char *Utf16_To_Utf8(char *dest, const wchar_t *src, const wchar_t *srcLim
 
 bool ConvertUTF8ToUnicode(const AString &src, UString &dest)
 {
-  auto code = CheckUTF8(src) ?
-              Cube::Encoding::Utf8 :
-              Cube::Encoding::Conversion::Guess((const char*)src);
-  auto cvt  = code != Cube::Encoding::Unknown ?
-              Cube::Encoding::Conversion::ToUnicode((const char*)src, code) :
-              Cube::Encoding::Conversion::Widen((const char*)src);
-
-  dest = cvt.c_str();
+  MultiByteToUnicodeString2(dest, src, CP_UTF8);
   return true;
 }
 

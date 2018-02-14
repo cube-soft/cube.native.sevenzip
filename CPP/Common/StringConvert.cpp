@@ -28,6 +28,13 @@ void MultiByteToUnicodeString2(UString &dest, const AString &src, UINT codePage)
                   Cube::Encoding::Conversion::ToUnicode((const char*)src, code) :
                   Cube::Encoding::Conversion::Widen((const char*)src, codePage);
 
+      if (code != Cube::Encoding::Utf8 &&
+          code != Cube::Encoding::ShiftJis &&
+          !Cube::Encoding::Validator::IsValidPath(cvt))
+      {
+          cvt = Cube::Encoding::Conversion::Widen((const char*)src, codePage);
+      }
+
       dest = cvt.c_str();
   }
 }
@@ -64,7 +71,7 @@ void MultiByteToUnicodeString2(UString &dest, const AString &src, UINT /* codePa
     dest.ReleaseBuf_SetEnd((unsigned)len);
     return;
   }
-  
+
   {
     unsigned i;
     const char *s = (const char *)src;
