@@ -255,6 +255,9 @@
     <ClCompile Include="..\..\..\Windows\Synchronization.cpp">
       <Filter>Windows</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Windows\System.cpp">
+      <Filter>Windows</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\Windows\Window.cpp">
       <Filter>Windows</Filter>
     </ClCompile>
@@ -351,7 +354,13 @@
     <ClCompile Include="..\..\..\..\C\Lzma2Dec.c">
       <Filter>C</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\C\Lzma2DecMt.c">
+      <Filter>C</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\C\LzmaDec.c">
+      <Filter>C</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\MtDec.c">
       <Filter>C</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\C\Ppmd7.c">
@@ -519,6 +528,9 @@
     <ClInclude Include="..\..\..\Windows\Synchronization.h">
       <Filter>Windows</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Windows\System.h">
+      <Filter>Windows</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Windows\Window.h">
       <Filter>Windows</Filter>
     </ClInclude>
@@ -600,7 +612,13 @@
     <ClInclude Include="..\..\..\..\C\Lzma2Dec.h">
       <Filter>C</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\C\Lzma2DecMt.h">
+      <Filter>C</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\C\LzmaDec.h">
+      <Filter>C</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\C\MtDec.h">
       <Filter>C</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\C\Ppmd7.h">
