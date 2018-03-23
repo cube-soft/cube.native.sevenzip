@@ -356,6 +356,9 @@
     <ClCompile Include="..\..\Compress\QuantumDecoder.cpp">
       <Filter>Compress\Cab Compress</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Compress\LzfseDecoder.cpp">
+      <Filter>Compress</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Compress\LzhDecoder.cpp">
       <Filter>Compress</Filter>
     </ClCompile>
@@ -551,6 +554,9 @@
     <ClCompile Include="..\..\..\..\C\Lzma2Dec.c">
       <Filter>C</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\C\Lzma2DecMt.c">
+      <Filter>C</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\C\Lzma2Enc.c">
       <Filter>C</Filter>
     </ClCompile>
@@ -561,6 +567,9 @@
       <Filter>C</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\C\MtCoder.c">
+      <Filter>C</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\MtDec.c">
       <Filter>C</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\C\Ppmd7.c">
@@ -1113,6 +1122,9 @@
     <ClInclude Include="..\..\Compress\HuffmanDecoder.h">
       <Filter>Compress</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Compress\LzfseDecoder.h">
+      <Filter>Compress</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Compress\LzhDecoder.h">
       <Filter>Compress</Filter>
     </ClInclude>
@@ -1296,6 +1308,9 @@
     <ClInclude Include="..\..\..\..\C\Lzma2Dec.h">
       <Filter>C</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\C\Lzma2DecMt.h">
+      <Filter>C</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\C\Lzma2Enc.h">
       <Filter>C</Filter>
     </ClInclude>
@@ -1306,6 +1321,9 @@
       <Filter>C</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\C\MtCoder.h">
+      <Filter>C</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\C\MtDec.h">
       <Filter>C</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\C\Ppmd.h">

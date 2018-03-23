@@ -203,7 +203,19 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\C\Lzma2DecMt.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\C\LzmaDec.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\MtDec.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -257,6 +269,7 @@
     <ClCompile Include="..\..\..\Windows\ResourceString.cpp" />
     <ClCompile Include="..\..\..\Windows\Shell.cpp" />
     <ClCompile Include="..\..\..\Windows\Synchronization.cpp" />
+    <ClCompile Include="..\..\..\Windows\System.cpp" />
     <ClCompile Include="..\..\..\Windows\Window.cpp" />
     <ClCompile Include="..\..\Archive\7z\7zDecode.cpp" />
     <ClCompile Include="..\..\Archive\7z\7zExtract.cpp" />
@@ -337,7 +350,9 @@
     <ClInclude Include="..\..\..\..\C\Delta.h" />
     <ClInclude Include="..\..\..\..\C\DllSecur.h" />
     <ClInclude Include="..\..\..\..\C\Lzma2Dec.h" />
+    <ClInclude Include="..\..\..\..\C\Lzma2DecMt.h" />
     <ClInclude Include="..\..\..\..\C\LzmaDec.h" />
+    <ClInclude Include="..\..\..\..\C\MtDec.h" />
     <ClInclude Include="..\..\..\..\C\Ppmd7.h" />
     <ClInclude Include="..\..\..\..\C\Threads.h" />
     <ClInclude Include="..\..\..\Common\CommandLineParser.h" />
@@ -363,6 +378,7 @@
     <ClInclude Include="..\..\..\Windows\ResourceString.h" />
     <ClInclude Include="..\..\..\Windows\Shell.h" />
     <ClInclude Include="..\..\..\Windows\Synchronization.h" />
+    <ClInclude Include="..\..\..\Windows\System.h" />
     <ClInclude Include="..\..\..\Windows\Window.h" />
     <ClInclude Include="..\..\Archive\7z\7zDecode.h" />
     <ClInclude Include="..\..\Archive\7z\7zHandler.h" />
