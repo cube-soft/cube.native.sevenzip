@@ -1,7 +1,7 @@
 #define MY_VER_MAJOR 18
-#define MY_VER_MINOR 03
+#define MY_VER_MINOR 05
 #define MY_VER_BUILD 01
-#define MY_VERSION_NUMBERS "18.03 beta"
+#define MY_VERSION_NUMBERS "18.05"
 #define MY_VERSION MY_VERSION_NUMBERS
 
 #ifdef MY_CPU_NAME
@@ -10,7 +10,7 @@
   #define MY_VERSION_CPU MY_VERSION
 #endif
 
-#define MY_DATE "2018-03-23"
+#define MY_DATE "2018-05-08"
 #undef MY_COPYRIGHT
 #undef MY_VERSION_COPYRIGHT_DATE
 #define MY_AUTHOR_NAME "Igor Pavlov"
