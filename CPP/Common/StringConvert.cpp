@@ -51,7 +51,7 @@ static void UnicodeStringToMultiByte2(AString &dest, const UString &src, UINT co
                 codePage == CP_MACCP;
     auto cvt  = utf8 ?
                 Cube::Encoding::Conversion::ToUtf8((const wchar_t*)src) :
-                Cube::Encoding::Conversion::ToShiftJis((const wchar_t*)src);
+                Cube::Encoding::Conversion::Narrow((const wchar_t*)src, codePage);
     dest = cvt.c_str();
   }
 }
