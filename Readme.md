@@ -1,9 +1,10 @@
-7-Zip (cube-soft/7z)
+7-Zip (Cube.Native.SevenZip)
 ====
 
+[![NuGet](https://img.shields.io/nuget/v/Cube.Native.SevenZip.svg)](https://www.nuget.org/packages/Cube.Native.SevenZip)
 [![AppVeyor](https://ci.appveyor.com/api/projects/status/n2q1nun7oe9cwg1a?svg=true)](https://ci.appveyor.com/project/clown/7z)
 
-[cube-soft/7z](https://github.com/cube-soft/7z) is a fork repository of the [7-Zip](http://www.7-zip.org/) project optimized for Japanese encoding.   
+[Cube.Native.SevenZip](https://github.com/cube-soft/7z) is a fork repository of the [7-Zip](http://www.7-zip.org/) project optimized for Japanese encoding.   
 The repository has three main branches as follow:
 
 * 7z ... Copy the original sources of 7-Zip project without any modifications.

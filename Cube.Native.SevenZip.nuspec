@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package >
+    <metadata>
+        <version>19.0.1</version>
+        <id>Cube.Native.SevenZip</id>
+        <title>Cube.Native.SevenZip</title>
+        <authors>clown,cube-soft,Igor Pavlov</authors>
+        <owners>clown,cube-soft</owners>
+        <description>7-Zip library (7z.dll) optimized for Japanese encoding.</description>
+        <copyright>Copyright © 2010 Igor Pavlov and CubeSoft, Inc.</copyright>
+        <tags>Cube Native 7-Zip 7z SevenZip Zip</tags>
+        <license type="expression">LGPL-3.0-or-later</license>
+        <projectUrl>https://github.com/cube-soft/7z</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    </metadata>
+    <files>
+        <file src="Release\Win32\7z.dll" target="runtimes\win-x86\native" />
+        <file src="Release\Win32\7z.sfx" target="runtimes\win-x86\native" />
+        <file src="Release\x64\7z.dll"   target="runtimes\win-x64\native" />
+        <file src="Release\x64\7z.sfx"   target="runtimes\win-x64\native" />
+    </files>
+</package>
