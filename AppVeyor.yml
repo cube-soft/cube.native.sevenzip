@@ -11,7 +11,7 @@ platform:
 configuration: Release
 build:
     parallel: true
-    project: CubeIce7z.sln
+    project: Cube.Native.SevenZip.sln
     publish_nuget: true
     verbosity: minimal
 after_build:

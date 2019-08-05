@@ -21,4 +21,4 @@ C# wrapper library for 7-Zip is also available at [Cube.FileSystem.SevenZip](htt
 Copyright (c) 2010 [CubeSoft, Inc.](http://www.cube-soft.jp/)  
 Copyright (c) 2016 [Igor Pavlov.](http://www.7-zip.org/)
 
-The project is licensed under the [GNU LGPLv3](https://github.com/cube-soft/Cube.FileSystem/blob/master/Libraries/SevenZip/License.txt).
+The project is licensed under the [GNU LGPLv3](https://github.com/cube-soft/7z/blob/master/License.txt).
