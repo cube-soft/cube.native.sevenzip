@@ -1,4 +1,4 @@
-version: 18.5.1.{build}
+version: 19.0.1.{build}
 branches:
     only:
         - master
