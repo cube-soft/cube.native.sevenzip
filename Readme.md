@@ -14,7 +14,7 @@ C# wrapper library for 7-Zip is also available at [Cube.FileSystem.SevenZip](htt
 
 ## Thanks
 
-* [babel](http://tricklib.com/cxx/ex/babel/) ... Included in the repository.
+* [babel](http://web.archive.org/web/20171002001908/http://tricklib.com/cxx/ex/babel/) ... Included in the repository.
 
 ## License
 
