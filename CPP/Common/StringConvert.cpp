@@ -21,7 +21,7 @@ void MultiByteToUnicodeString2(UString &dest, const AString &src, UINT codePage)
   dest.Empty();
   if (!src.IsEmpty())
   {
-      auto code = CheckUTF8(src) ?
+      auto code = CheckUTF8_AString(src) ?
                   Cube::Encoding::Utf8 :
                   Cube::Encoding::Conversion::Guess((const char*)src);
       auto cvt  = code != Cube::Encoding::Unknown ?

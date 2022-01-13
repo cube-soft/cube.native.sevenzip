@@ -14,7 +14,7 @@
     <SccProjectName />
     <SccLocalPath />
     <ProjectGuid>{3777C31A-37FE-4017-BBAD-6D8EA6394980}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -239,6 +239,12 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\C\Sha256Opt.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\C\Threads.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
@@ -251,9 +257,11 @@
     <ClCompile Include="..\..\..\Common\MyString.cpp" />
     <ClCompile Include="..\..\..\Common\MyVector.cpp" />
     <ClCompile Include="..\..\..\Common\NewHandler.cpp" />
+    <ClCompile Include="..\..\..\Common\Sha256Prepare.cpp" />
     <ClCompile Include="..\..\..\Common\StringConvert.cpp" />
     <ClCompile Include="..\..\..\Common\UTFConvert.cpp" />
     <ClCompile Include="..\..\..\Common\Wildcard.cpp" />
+    <ClCompile Include="..\..\..\Windows\Clipboard.cpp" />
     <ClCompile Include="..\..\..\Windows\CommonDialog.cpp" />
     <ClCompile Include="..\..\..\Windows\Control\ComboBox.cpp" />
     <ClCompile Include="..\..\..\Windows\Control\Dialog.cpp" />
@@ -264,6 +272,7 @@
     <ClCompile Include="..\..\..\Windows\FileFind.cpp" />
     <ClCompile Include="..\..\..\Windows\FileIO.cpp" />
     <ClCompile Include="..\..\..\Windows\FileName.cpp" />
+    <ClCompile Include="..\..\..\Windows\MemoryGlobal.cpp" />
     <ClCompile Include="..\..\..\Windows\PropVariant.cpp" />
     <ClCompile Include="..\..\..\Windows\PropVariantConv.cpp" />
     <ClCompile Include="..\..\..\Windows\ResourceString.cpp" />
@@ -363,6 +372,7 @@
     <ClInclude Include="..\..\..\Common\NewHandler.h" />
     <ClInclude Include="..\..\..\Common\StringConvert.h" />
     <ClInclude Include="..\..\..\Common\Wildcard.h" />
+    <ClInclude Include="..\..\..\Windows\Clipboard.h" />
     <ClInclude Include="..\..\..\Windows\CommonDialog.h" />
     <ClInclude Include="..\..\..\Windows\Control\ComboBox.h" />
     <ClInclude Include="..\..\..\Windows\Control\Dialog.h" />
@@ -373,6 +383,7 @@
     <ClInclude Include="..\..\..\Windows\FileFind.h" />
     <ClInclude Include="..\..\..\Windows\FileIO.h" />
     <ClInclude Include="..\..\..\Windows\FileName.h" />
+    <ClInclude Include="..\..\..\Windows\MemoryGlobal.h" />
     <ClInclude Include="..\..\..\Windows\PropVariant.h" />
     <ClInclude Include="..\..\..\Windows\PropVariantConv.h" />
     <ClInclude Include="..\..\..\Windows\ResourceString.h" />
