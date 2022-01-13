@@ -1,7 +1,7 @@
 Cube.Native.SevenZip
 ====
 
-[![NuGet](https://img.shields.io/nuget/v/Cube.Native.SevenZip.svg)](https://www.nuget.org/packages/Cube.Native.SevenZip)
+[![NuGet](https://badgen.net/nuget/v/cube.native.sevenzip)](https://www.nuget.org/packages/Cube.Native.SevenZip)
 
 [Cube.Native.SevenZip](https://github.com/cube-soft/Cube.Native.SevenZip) is a fork repository of the [7-Zip](http://www.7-zip.org/) project optimized for Japanese encoding.   
 The repository has three main branches as follow:
