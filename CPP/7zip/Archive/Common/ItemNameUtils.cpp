@@ -66,14 +66,16 @@ void ReplaceToOsSlashes_Remove_TailSlash(UString &name, bool
       if (c == L'/')
         c = WCHAR_PATH_SEPARATOR;
       else if (useBackslashReplacement && c == L'\\')
-        c = WCHAR_IN_FILE_NAME_BACKSLASH_REPLACEMENT; // WSL scheme
+        // hack by clown
+        // c = WCHAR_IN_FILE_NAME_BACKSLASH_REPLACEMENT; // WSL scheme
+        continue;
       else
         continue;
       name.ReplaceOneCharAtPos(i, c);
     }
   }
   #endif
-    
+
   if (name.Back() == kOsPathSepar)
     name.DeleteBack();
 }
