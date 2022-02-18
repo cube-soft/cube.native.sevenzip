@@ -301,7 +301,20 @@ bool Convert_UTF8_Buf_To_Unicode(const char *src, size_t srcSize, UString &dest,
   auto tmp = Cube::Encoding::Conversion::ascii_string(src, src + srcSize);
   if (!tmp.empty())
   {
-      auto cvt = Cube::Encoding::Conversion::ToUnicode(tmp, Cube::Encoding::Utf8);
+      auto code = Check_UTF8_Buf(src, srcSize, false) ?
+                  Cube::Encoding::Utf8 :
+                  Cube::Encoding::Conversion::Guess(tmp);
+      auto cvt  = code != Cube::Encoding::Unknown ?
+                  Cube::Encoding::Conversion::ToUnicode(tmp, code) :
+                  Cube::Encoding::Conversion::Widen(tmp, CP_OEMCP);
+
+      if ((code == Cube::Encoding::Jis ||
+           code == Cube::Encoding::EucJp) &&
+          !Cube::Encoding::Validator::IsValidPath(cvt))
+      {
+          code = Cube::Encoding::ShiftJis;
+          cvt  = Cube::Encoding::Conversion::ToUnicode(tmp, code);
+      }
       dest = cvt.c_str();
   }
   return true;
