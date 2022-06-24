@@ -788,6 +788,9 @@
     <ClCompile Include="..\..\Archive\Udf\UdfIn.cpp">
       <Filter>Archive\Udf</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Archive\ApfsHandler.cpp">
+      <Filter>Archive</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Archive\ApmHandler.cpp">
       <Filter>Archive</Filter>
     </ClCompile>
@@ -842,6 +845,9 @@
     <ClCompile Include="..\..\Archive\IhexHandler.cpp">
       <Filter>Archive</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Archive\LpHandler.cpp">
+      <Filter>Archive</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Archive\LzhHandler.cpp">
       <Filter>Archive</Filter>
     </ClCompile>
@@ -873,6 +879,9 @@
       <Filter>Archive</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Archive\RpmHandler.cpp">
+      <Filter>Archive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Archive\SparseHandler.cpp">
       <Filter>Archive</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Archive\SplitHandler.cpp">
@@ -918,6 +927,9 @@
       <Filter>Windows</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Windows\PropVariant.cpp">
+      <Filter>Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Windows\PropVariantConv.cpp">
       <Filter>Windows</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Windows\PropVariantUtils.cpp">
@@ -1603,6 +1615,9 @@
       <Filter>Windows</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Windows\PropVariant.h">
+      <Filter>Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Windows\PropVariantConv.h">
       <Filter>Windows</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Windows\PropVariantUtils.h">
