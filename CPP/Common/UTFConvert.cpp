@@ -379,7 +379,6 @@ void ConvertUnicodeToUTF8(const UString &src, AString &dest)
 
 void Convert_Unicode_To_UTF8_Buf(const UString &src, CByteBuffer &dest)
 {
-  const unsigned flags = g_Unicode_To_UTF8_Flags;
   dest.Free();
   auto cvt = Cube::Encoding::Conversion::ToUtf8(src.Ptr());
   dest.CopyFrom((const unsigned char*)(cvt.c_str()), cvt.size());
