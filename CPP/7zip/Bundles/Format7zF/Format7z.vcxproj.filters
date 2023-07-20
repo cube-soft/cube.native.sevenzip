@@ -599,6 +599,9 @@
     <ClCompile Include="..\..\..\..\C\Sort.c">
       <Filter>C</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\C\SwapBytes.c">
+      <Filter>C</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\C\Threads.c">
       <Filter>C</Filter>
     </ClCompile>
@@ -1299,6 +1302,9 @@
     <ClInclude Include="..\..\..\..\C\7zTypes.h">
       <Filter>C</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\C\7zWindows.h">
+      <Filter>C</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\C\Aes.h">
       <Filter>C</Filter>
     </ClInclude>
@@ -1384,6 +1390,9 @@
       <Filter>C</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\C\StdAfx.h">
+      <Filter>C</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\C\SwapBytes.h">
       <Filter>C</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\C\Threads.h">

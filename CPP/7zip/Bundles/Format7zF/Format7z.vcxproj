@@ -60,7 +60,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;_USRDLL;MY7Z_EXPORTS;NO_REGISTRY;EXTERNAL_CODECS;_7ZIP_LARGE_PAGES;_7ZIP_ST_9;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;_USRDLL;MY7Z_EXPORTS;Z7_EXTERNAL_CODECS;Z7_LARGE_PAGES;Z7_ST_9;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerOutput>All</AssemblerOutput>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <CallingConvention>FastCall</CallingConvention>
@@ -101,7 +101,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;_USRDLL;MY7Z_EXPORTS;NO_REGISTRY;EXTERNAL_CODECS;_7ZIP_LARGE_PAGES;_7ZIP_ST_9;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;_USRDLL;MY7Z_EXPORTS;Z7_EXTERNAL_CODECS;Z7_LARGE_PAGES;Z7_ST_9;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerOutput>All</AssemblerOutput>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <CallingConvention>FastCall</CallingConvention>
@@ -452,6 +452,14 @@
       </PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\..\C\Sort.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MaxSpeed</Optimization>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\SwapBytes.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MaxSpeed</Optimization>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -1036,6 +1044,7 @@
     <ClInclude Include="..\..\..\..\C\7zBuf.h" />
     <ClInclude Include="..\..\..\..\C\7zCrc.h" />
     <ClInclude Include="..\..\..\..\C\7zTypes.h" />
+    <ClInclude Include="..\..\..\..\C\7zWindows.h" />
     <ClInclude Include="..\..\..\..\C\Aes.h" />
     <ClInclude Include="..\..\..\..\C\Alloc.h" />
     <ClInclude Include="..\..\..\..\C\Bcj2.h" />
@@ -1065,6 +1074,7 @@
     <ClInclude Include="..\..\..\..\C\Sha256.h" />
     <ClInclude Include="..\..\..\..\C\Sort.h" />
     <ClInclude Include="..\..\..\..\C\StdAfx.h" />
+    <ClInclude Include="..\..\..\..\C\SwapBytes.h" />
     <ClInclude Include="..\..\..\..\C\Threads.h" />
     <ClInclude Include="..\..\..\..\C\Xz.h" />
     <ClInclude Include="..\..\..\..\C\XzCrc64.h" />

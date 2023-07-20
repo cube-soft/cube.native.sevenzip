@@ -47,6 +47,7 @@
     <OutDir>$(SolutionDir)$(Configuration)\$(Platform)\</OutDir>
     <IntDir>$(Configuration)\$(Platform)\</IntDir>
     <TargetName>7z</TargetName>
+    <EmbedManifest>false</EmbedManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -54,6 +55,7 @@
     <OutDir>$(SolutionDir)$(Configuration)\$(Platform)\</OutDir>
     <IntDir>$(Configuration)\$(Platform)\</IntDir>
     <TargetName>7z</TargetName>
+    <EmbedManifest>false</EmbedManifest>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -65,7 +67,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>false</TreatWarningAsError>
-      <PreprocessorDefinitions>NDEBUG;_SFXWIN32;_WINDOWS;EXTRACT_ONLY;NO_REGISTRY;NO_READ_FROM_CODER;_SFX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;Z7_NO_REGISTRY;Z7_EXTRACT_ONLY;Z7_NO_READ_FROM_CODER;Z7_SFX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <CallingConvention>FastCall</CallingConvention>
     </ClCompile>
@@ -100,7 +102,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>false</TreatWarningAsError>
-      <PreprocessorDefinitions>NDEBUG;_SFXWIN32;_WINDOWS;EXTRACT_ONLY;NO_REGISTRY;NO_READ_FROM_CODER;_SFX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;Z7_NO_REGISTRY;Z7_EXTRACT_ONLY;Z7_NO_READ_FROM_CODER;Z7_SFX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <CallingConvention>FastCall</CallingConvention>
     </ClCompile>
@@ -132,6 +134,12 @@
       </PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\..\C\7zCrcOpt.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\7zStream.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -352,6 +360,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\C\7zCrc.h" />
+    <ClInclude Include="..\..\..\..\C\7zWindows.h" />
     <ClInclude Include="..\..\..\..\C\Aes.h" />
     <ClInclude Include="..\..\..\..\C\Alloc.h" />
     <ClInclude Include="..\..\..\..\C\Bcj2.h" />
@@ -439,7 +448,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="7z.ico" />
-    <Image Include="7z1.ico" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />

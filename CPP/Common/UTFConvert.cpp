@@ -9,17 +9,17 @@
 #include "../Cube/Encoding.h"
 #pragma warning(disable:4100)
 
-#ifndef _WCHART_IS_16BIT
+#ifndef Z7_WCHART_IS_16BIT
 #ifndef __APPLE__
   // we define it if the system supports files with non-utf8 symbols:
-  #define _UTF8_RAW_NON_UTF8_SUPPORTED
+  #define MY_UTF8_RAW_NON_UTF8_SUPPORTED
 #endif
 #endif
 
 /*
-  _UTF8_START(n) - is a base value for start byte (head), if there are (n) additional bytes after start byte
-
-  n : _UTF8_START(n) : Bits of code point
+  MY_UTF8_START(n) - is a base value for start byte (head), if there are (n) additional bytes after start byte
+  
+  n : MY_UTF8_START(n) : Bits of code point
 
   0 : 0x80 :    : unused
   1 : 0xC0 : 11 :
@@ -31,13 +31,13 @@
   7 : 0xFF :
 */
 
-#define _UTF8_START(n) (0x100 - (1 << (7 - (n))))
+#define MY_UTF8_START(n) (0x100 - (1 << (7 - (n))))
 
-#define _UTF8_HEAD_PARSE2(n) \
-    if (c < _UTF8_START((n) + 1)) \
-    { numBytes = (n); val -= _UTF8_START(n); }
+#define MY_UTF8_HEAD_PARSE2(n) \
+    if (c < MY_UTF8_START((n) + 1)) \
+    { numBytes = (n); val -= MY_UTF8_START(n); }
 
-#ifndef _WCHART_IS_16BIT
+#ifndef Z7_WCHART_IS_16BIT
 
 /*
    if (wchar_t is 32-bit), we can support large points in long UTF-8 sequence,
@@ -47,30 +47,30 @@
      (_UTF8_NUM_TAIL_BYTES_MAX == 6) : (36-bit hack)
 */
 
-#define _UTF8_NUM_TAIL_BYTES_MAX 5
+#define MY_UTF8_NUM_TAIL_BYTES_MAX 5
 #endif
 
 /*
-#define _UTF8_HEAD_PARSE \
+#define MY_UTF8_HEAD_PARSE \
     UInt32 val = c; \
-         _UTF8_HEAD_PARSE2(1) \
-    else _UTF8_HEAD_PARSE2(2) \
-    else _UTF8_HEAD_PARSE2(3) \
-    else _UTF8_HEAD_PARSE2(4) \
-    else _UTF8_HEAD_PARSE2(5) \
-  #if _UTF8_NUM_TAIL_BYTES_MAX >= 6
-    else _UTF8_HEAD_PARSE2(6)
+         MY_UTF8_HEAD_PARSE2(1) \
+    else MY_UTF8_HEAD_PARSE2(2) \
+    else MY_UTF8_HEAD_PARSE2(3) \
+    else MY_UTF8_HEAD_PARSE2(4) \
+    else MY_UTF8_HEAD_PARSE2(5) \
+  #if MY_UTF8_NUM_TAIL_BYTES_MAX >= 6
+    else MY_UTF8_HEAD_PARSE2(6)
   #endif
 */
 
-#define _UTF8_HEAD_PARSE_MAX_3_BYTES \
+#define MY_UTF8_HEAD_PARSE_MAX_3_BYTES \
     UInt32 val = c; \
-         _UTF8_HEAD_PARSE2(1) \
-    else _UTF8_HEAD_PARSE2(2) \
-    else { numBytes = 3; val -= _UTF8_START(3); }
+         MY_UTF8_HEAD_PARSE2(1) \
+    else MY_UTF8_HEAD_PARSE2(2) \
+    else { numBytes = 3; val -= MY_UTF8_START(3); }
 
 
-#define _UTF8_RANGE(n) (((UInt32)1) << ((n) * 5 + 6))
+#define MY_UTF8_RANGE(n) (((UInt32)1) << ((n) * 5 + 6))
 
 
 #define START_POINT_FOR_SURROGATE 0x10000
@@ -83,7 +83,7 @@
 */
 
 
-#if defined(_WCHART_IS_16BIT)
+#if defined(Z7_WCHART_IS_16BIT)
 
 #define UTF_ESCAPE_PLANE 0
 
@@ -103,7 +103,7 @@ we can place 128 ESCAPE chars to
 #define UTF_ESCAPE_PLANE 0
 
 /*
-  if (UTF_FLAG__FROM_UTF8__USE_ESCAPE is set)
+  if (Z7_UTF_FLAG_FROM_UTF8_USE_ESCAPE is set)
   {
     if (UTF_ESCAPE_PLANE is UTF_ESCAPE_PLANE_HIGH)
     {
@@ -112,13 +112,13 @@ we can place 128 ESCAPE chars to
       So we still need a way to extract 8-bit Escapes and BMP-Escapes-8
       from same BMP-Escapes-16 stored in 7z.
       And if we want to restore any 8-bit from 7z archive,
-      we still must use UTF_FLAG__FROM_UTF8__BMP_ESCAPE_CONVERT for (utf-8 -> utf-16)
+      we still must use Z7_UTF_FLAG_FROM_UTF8_BMP_ESCAPE_CONVERT for (utf-8 -> utf-16)
       Also we need additional Conversions to tranform from utf-16 to utf-16-With-Escapes-21
     }
     else (UTF_ESCAPE_PLANE == 0)
     {
       we must convert original 3-bytes utf-8 BMP-Escape point to sequence
-      of 3 BMP-Escape-16 points with UTF_FLAG__FROM_UTF8__BMP_ESCAPE_CONVERT
+      of 3 BMP-Escape-16 points with Z7_UTF_FLAG_FROM_UTF8_BMP_ESCAPE_CONVERT
       so we can extract original RAW-UTF-8 from UTFD-16 later.
     }
   }
@@ -139,7 +139,7 @@ we can place 128 ESCAPE chars to
 #define IS_LOW_SURROGATE_POINT(v) (((v) & (UInt32)0xfffffC00) == 0xdc00)
 
 
-#define _ERROR_UTF8_CHECK \
+#define UTF_ERROR_UTF8_CHECK \
   { NonUtf = true; continue; }
 
 void CUtf8Check::Check_Buf(const char *src, size_t size) throw()
@@ -168,20 +168,20 @@ void CUtf8Check::Check_Buf(const char *src, size_t size) throw()
 
     if (c < 0x80)
       continue;
-
-    if (c < 0xc0 + 2)// it's limit for 0x140000 unicode codes : win32 compatibility
-      _ERROR_UTF8_CHECK
+    
+    if (c < 0xc0 + 2) // it's limit for 0x140000 unicode codes : win32 compatibility
+      UTF_ERROR_UTF8_CHECK
 
     unsigned numBytes;
 
     UInt32 val = c;
-         _UTF8_HEAD_PARSE2(1)
-    else _UTF8_HEAD_PARSE2(2)
-    else _UTF8_HEAD_PARSE2(4)
-    else _UTF8_HEAD_PARSE2(5)
+         MY_UTF8_HEAD_PARSE2(1)
+    else MY_UTF8_HEAD_PARSE2(2)
+    else MY_UTF8_HEAD_PARSE2(4)
+    else MY_UTF8_HEAD_PARSE2(5)
     else
     {
-      _ERROR_UTF8_CHECK
+      UTF_ERROR_UTF8_CHECK
     }
 
     unsigned pos = 0;
@@ -207,7 +207,7 @@ void CUtf8Check::Check_Buf(const char *src, size_t size) throw()
       if (pos == size)
         Truncated = true;
       else
-        _ERROR_UTF8_CHECK
+        UTF_ERROR_UTF8_CHECK
     }
 
     #ifdef UTF_ESCAPE_BASE
@@ -269,7 +269,7 @@ bool CheckUTF8(const char *src, bool allowReduced) throw()
       return false;
 
     unsigned numBytes;
-    _UTF8_HEAD_PARSE
+    MY_UTF8_HEAD_PARSE
     else
       return false;
 
@@ -286,7 +286,7 @@ bool CheckUTF8(const char *src, bool allowReduced) throw()
     }
     while (--numBytes);
 
-    if (val < _UTF8_RANGE(pos - 1))
+    if (val < MY_UTF8_RANGE(pos - 1))
       return false;
 
     if (val >= 0x110000)
@@ -328,11 +328,11 @@ bool ConvertUTF8ToUnicode_Flags(const AString &src, UString &dest, unsigned flag
 
 static
 unsigned g_UTF8_To_Unicode_Flags =
-    UTF_FLAG__FROM_UTF8__USE_ESCAPE
-  #ifndef _WCHART_IS_16BIT
-    | UTF_FLAG__FROM_UTF8__SURROGATE_ERROR
-  #ifdef _UTF8_RAW_NON_UTF8_SUPPORTED
-    | UTF_FLAG__FROM_UTF8__BMP_ESCAPE_CONVERT
+    Z7_UTF_FLAG_FROM_UTF8_USE_ESCAPE
+  #ifndef Z7_WCHART_IS_16BIT
+    | Z7_UTF_FLAG_FROM_UTF8_SURROGATE_ERROR
+  #ifdef MY_UTF8_RAW_NON_UTF8_SUPPORTED
+    | Z7_UTF_FLAG_FROM_UTF8_BMP_ESCAPE_CONVERT
   #endif
   #endif
     ;
@@ -361,13 +361,13 @@ void ConvertUnicodeToUTF8_Flags(const UString &src, AString &dest, unsigned flag
 
 
 unsigned g_Unicode_To_UTF8_Flags =
-      // UTF_FLAG__TO_UTF8__PARSE_HIGH_ESCAPE
+      // Z7_UTF_FLAG_TO_UTF8_PARSE_HIGH_ESCAPE
       0
   #ifndef _WIN32
-    #ifdef _UTF8_RAW_NON_UTF8_SUPPORTED
-      | UTF_FLAG__TO_UTF8__EXTRACT_BMP_ESCAPE
+    #ifdef MY_UTF8_RAW_NON_UTF8_SUPPORTED
+      | Z7_UTF_FLAG_TO_UTF8_EXTRACT_BMP_ESCAPE
     #else
-      | UTF_FLAG__TO_UTF8__SURROGATE_ERROR;
+      | Z7_UTF_FLAG_TO_UTF8_SURROGATE_ERROR
     #endif
   #endif
     ;
@@ -468,7 +468,7 @@ bool Unicode_IsThere_Utf16SurrogateError(const UString &src)
 }
 */
 
-#ifndef _WCHART_IS_16BIT
+#ifndef Z7_WCHART_IS_16BIT
 
 void Convert_UnicodeEsc16_To_UnicodeEscHigh
 #if UTF_ESCAPE_PLANE == 0
