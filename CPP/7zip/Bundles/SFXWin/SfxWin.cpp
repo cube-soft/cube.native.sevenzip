@@ -94,7 +94,7 @@ static int APIENTRY WinMain2()
   g_ComCtl32Version = ::GetDllVersion(TEXT("comctl32.dll"));
   g_LVN_ITEMACTIVATE_Support = (g_ComCtl32Version >= MAKELONG(71, 4));
   #endif
-  
+
   UString password;
   bool assumeYes = false;
   bool outputFolderDefined = false;
@@ -184,7 +184,7 @@ static int APIENTRY WinMain2()
       NExtract::NOverwriteMode::kAsk;
   eo.PathMode = NExtract::NPathMode::kFullPaths;
   eo.TestMode = false;
-  
+
   UStringVector v1, v2;
   v1.Add(fs2us(fullPath));
   v2.Add(fs2us(fullPath));

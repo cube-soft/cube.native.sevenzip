@@ -603,6 +603,9 @@
     <ClInclude Include="..\..\..\..\C\7zCrc.h">
       <Filter>C</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\C\7zWindows.h">
+      <Filter>C</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\C\Aes.h">
       <Filter>C</Filter>
     </ClInclude>
@@ -648,7 +651,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="7z.ico" />
-    <Image Include="7z1.ico" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />
