@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
     <metadata>
-        <version>23.1.1</version>
+        <version>24.5.1</version>
         <id>Cube.Native.SevenZip</id>
         <title>Cube.Native.SevenZip</title>
         <authors>clown,cube-soft,Igor Pavlov</authors>

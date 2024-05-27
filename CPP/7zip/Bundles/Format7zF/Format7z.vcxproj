@@ -157,6 +157,7 @@
     <Image Include="..\..\Archive\Icons\xz.ico" />
     <Image Include="..\..\Archive\Icons\z.ico" />
     <Image Include="..\..\Archive\Icons\zip.ico" />
+    <Image Include="..\..\Archive\Icons\zst.ico" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\..\..\Asm\x86\7zAsm.asm" />
@@ -473,6 +474,14 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\C\Xxh64.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MaxSpeed</Optimization>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\C\Xz.c">
       <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Level4</WarningLevel>
       <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Level4</WarningLevel>
@@ -521,6 +530,14 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\C\ZstdDec.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MaxSpeed</Optimization>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\..\..\Common\CRC.cpp" />
     <ClCompile Include="..\..\..\Common\CrcReg.cpp" />
     <ClCompile Include="..\..\..\Common\DynLimBuf.cpp" />
@@ -539,6 +556,7 @@
     <ClCompile Include="..\..\..\Common\StringToInt.cpp" />
     <ClCompile Include="..\..\..\Common\UTFConvert.cpp" />
     <ClCompile Include="..\..\..\Common\Wildcard.cpp" />
+    <ClCompile Include="..\..\..\Common\Xxh64Reg.cpp" />
     <ClCompile Include="..\..\..\Common\XzCrc64Init.cpp" />
     <ClCompile Include="..\..\..\Common\XzCrc64Reg.cpp" />
     <ClCompile Include="..\..\..\Windows\FileDir.cpp" />
@@ -658,6 +676,7 @@
     <ClCompile Include="..\..\Archive\XarHandler.cpp" />
     <ClCompile Include="..\..\Archive\XzHandler.cpp" />
     <ClCompile Include="..\..\Archive\ZHandler.cpp" />
+    <ClCompile Include="..\..\Archive\ZstdHandler.cpp" />
     <ClCompile Include="..\..\Archive\Zip\ZipAddCommon.cpp" />
     <ClCompile Include="..\..\Archive\Zip\ZipHandler.cpp" />
     <ClCompile Include="..\..\Archive\Zip\ZipHandlerOut.cpp" />
@@ -918,6 +937,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\..\Compress\ZstdDecoder.cpp" />
     <ClCompile Include="..\..\Crypto\7zAes.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MaxSpeed</Optimization>
@@ -1076,10 +1096,15 @@
     <ClInclude Include="..\..\..\..\C\StdAfx.h" />
     <ClInclude Include="..\..\..\..\C\SwapBytes.h" />
     <ClInclude Include="..\..\..\..\C\Threads.h" />
+    <ClInclude Include="..\..\..\..\C\Xxh64.h" />
     <ClInclude Include="..\..\..\..\C\Xz.h" />
     <ClInclude Include="..\..\..\..\C\XzCrc64.h" />
     <ClInclude Include="..\..\..\..\C\XzEnc.h" />
+    <ClInclude Include="..\..\..\..\C\ZstdDec.h" />
+    <ClInclude Include="..\..\..\Common\AutoPtr.h" />
     <ClInclude Include="..\..\..\Common\Common.h" />
+    <ClInclude Include="..\..\..\Common\Common0.h" />
+    <ClInclude Include="..\..\..\Common\ComTry.h" />
     <ClInclude Include="..\..\..\Common\Defs.h" />
     <ClInclude Include="..\..\..\Common\DynamicBuffer.h" />
     <ClInclude Include="..\..\..\Common\DynLimBuf.h" />
@@ -1243,6 +1268,7 @@
     <ClInclude Include="..\..\Compress\ZDecoder.h" />
     <ClInclude Include="..\..\Compress\ZlibDecoder.h" />
     <ClInclude Include="..\..\Compress\ZlibEncoder.h" />
+    <ClInclude Include="..\..\Compress\ZstdDecoder.h" />
     <ClInclude Include="..\..\Crypto\7zAes.h" />
     <ClInclude Include="..\..\Crypto\HmacSha1.h" />
     <ClInclude Include="..\..\Crypto\HmacSha256.h" />
