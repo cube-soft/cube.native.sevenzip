@@ -350,6 +350,14 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\C\Md5.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MaxSpeed</Optimization>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\C\MtCoder.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
@@ -452,6 +460,30 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\C\Sha3.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MaxSpeed</Optimization>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\Sha512.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MaxSpeed</Optimization>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\C\Sha512Opt.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MaxSpeed</Optimization>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\C\Sort.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MaxSpeed</Optimization>
@@ -543,6 +575,7 @@
     <ClCompile Include="..\..\..\Common\DynLimBuf.cpp" />
     <ClCompile Include="..\..\..\Common\IntToString.cpp" />
     <ClCompile Include="..\..\..\Common\LzFindPrepare.cpp" />
+    <ClCompile Include="..\..\..\Common\Md5Reg.cpp" />
     <ClCompile Include="..\..\..\Common\MyMap.cpp" />
     <ClCompile Include="..\..\..\Common\MyString.cpp" />
     <ClCompile Include="..\..\..\Common\MyVector.cpp" />
@@ -552,6 +585,9 @@
     <ClCompile Include="..\..\..\Common\Sha1Reg.cpp" />
     <ClCompile Include="..\..\..\Common\Sha1Prepare.cpp" />
     <ClCompile Include="..\..\..\Common\Sha256Reg.cpp" />
+    <ClCompile Include="..\..\..\Common\Sha3Reg.cpp" />
+    <ClCompile Include="..\..\..\Common\Sha512Prepare.cpp" />
+    <ClCompile Include="..\..\..\Common\Sha512Reg.cpp" />
     <ClCompile Include="..\..\..\Common\StringConvert.cpp" />
     <ClCompile Include="..\..\..\Common\StringToInt.cpp" />
     <ClCompile Include="..\..\..\Common\UTFConvert.cpp" />
@@ -1083,6 +1119,7 @@
     <ClInclude Include="..\..\..\..\C\Lzma2Enc.h" />
     <ClInclude Include="..\..\..\..\C\LzmaDec.h" />
     <ClInclude Include="..\..\..\..\C\LzmaEnc.h" />
+    <ClInclude Include="..\..\..\..\C\Md5.h" />
     <ClInclude Include="..\..\..\..\C\MtCoder.h" />
     <ClInclude Include="..\..\..\..\C\MtDec.h" />
     <ClInclude Include="..\..\..\..\C\Ppmd.h" />
@@ -1092,6 +1129,8 @@
     <ClInclude Include="..\..\..\..\C\RotateDefs.h" />
     <ClInclude Include="..\..\..\..\C\Sha1.h" />
     <ClInclude Include="..\..\..\..\C\Sha256.h" />
+    <ClInclude Include="..\..\..\..\C\Sha3.h" />
+    <ClInclude Include="..\..\..\..\C\Sha512.h" />
     <ClInclude Include="..\..\..\..\C\Sort.h" />
     <ClInclude Include="..\..\..\..\C\StdAfx.h" />
     <ClInclude Include="..\..\..\..\C\SwapBytes.h" />
