@@ -47,6 +47,27 @@ UString GetOsPath_Remove_TailSlash(const UString &name)
 }
 
 
+#if WCHAR_PATH_SEPARATOR != L'/'
+void ReplaceToWinSlashes(UString &name, bool useBackslashReplacement)
+{
+  // name.Replace(kUnixPathSepar, kOsPathSepar);
+  const unsigned len = name.Len();
+  for (unsigned i = 0; i < len; i++)
+  {
+    wchar_t c = name[i];
+    if (c == L'/')
+      c = WCHAR_PATH_SEPARATOR;
+    else if (useBackslashReplacement && c == L'\\')
+      // hack by clown
+      // c = WCHAR_IN_FILE_NAME_BACKSLASH_REPLACEMENT; // WSL scheme
+      continue;
+    else
+      continue;
+    name.ReplaceOneCharAtPos(i, c);
+  }
+}
+#endif
+
 void ReplaceToOsSlashes_Remove_TailSlash(UString &name, bool
     #if WCHAR_PATH_SEPARATOR != L'/'
       useBackslashReplacement
@@ -57,23 +78,7 @@ void ReplaceToOsSlashes_Remove_TailSlash(UString &name, bool
     return;
 
   #if WCHAR_PATH_SEPARATOR != L'/'
-  {
-    // name.Replace(kUnixPathSepar, kOsPathSepar);
-    const unsigned len = name.Len();
-    for (unsigned i = 0; i < len; i++)
-    {
-      wchar_t c = name[i];
-      if (c == L'/')
-        c = WCHAR_PATH_SEPARATOR;
-      else if (useBackslashReplacement && c == L'\\')
-        // hack by clown
-        // c = WCHAR_IN_FILE_NAME_BACKSLASH_REPLACEMENT; // WSL scheme
-        continue;
-      else
-        continue;
-      name.ReplaceOneCharAtPos(i, c);
-    }
-  }
+  ReplaceToWinSlashes(name, useBackslashReplacement);
   #endif
 
   if (name.Back() == kOsPathSepar)
