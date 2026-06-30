@@ -165,6 +165,7 @@
     <Image Include="..\..\Archive\Icons\zip.ico">
       <Filter>Spec\Icons</Filter>
     </Image>
+    <Image Include="..\..\Archive\Icons\zst.ico" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Archive\ArchiveExports.cpp">
@@ -971,6 +972,19 @@
     <ClCompile Include="..\..\..\Common\LzFindPrepare.cpp">
       <Filter>Common</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\C\Md5.c" />
+    <ClCompile Include="..\..\..\..\C\Sha3.c" />
+    <ClCompile Include="..\..\..\..\C\Sha512.c" />
+    <ClCompile Include="..\..\..\..\C\Sha512Opt.c" />
+    <ClCompile Include="..\..\..\..\C\Xxh64.c" />
+    <ClCompile Include="..\..\..\..\C\ZstdDec.c" />
+    <ClCompile Include="..\..\..\Common\Md5Reg.cpp" />
+    <ClCompile Include="..\..\..\Common\Sha3Reg.cpp" />
+    <ClCompile Include="..\..\..\Common\Sha512Prepare.cpp" />
+    <ClCompile Include="..\..\..\Common\Sha512Reg.cpp" />
+    <ClCompile Include="..\..\..\Common\Xxh64Reg.cpp" />
+    <ClCompile Include="..\..\Archive\ZstdHandler.cpp" />
+    <ClCompile Include="..\..\Compress\ZstdDecoder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc">
@@ -1644,9 +1658,15 @@
     <ClInclude Include="..\..\..\Windows\TimeUtils.h">
       <Filter>Windows</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Compress\LzfseDecoder.h">
-      <Filter>Compress</Filter>
-    </ClInclude>
+    <ClInclude Include="..\..\..\..\C\Md5.h" />
+    <ClInclude Include="..\..\..\..\C\Sha3.h" />
+    <ClInclude Include="..\..\..\..\C\Sha512.h" />
+    <ClInclude Include="..\..\..\..\C\Xxh64.h" />
+    <ClInclude Include="..\..\..\..\C\ZstdDec.h" />
+    <ClInclude Include="..\..\..\Common\AutoPtr.h" />
+    <ClInclude Include="..\..\..\Common\Common0.h" />
+    <ClInclude Include="..\..\..\Common\ComTry.h" />
+    <ClInclude Include="..\..\Compress\ZstdDecoder.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\Archive\Archive2.def">

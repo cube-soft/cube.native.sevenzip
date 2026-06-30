@@ -391,6 +391,8 @@
     <ClCompile Include="..\..\..\Common\Sha256Prepare.cpp">
       <Filter>Common</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\C\7zStream.c" />
+    <ClCompile Include="..\..\..\Windows\TimeUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdAfx.h">
@@ -651,6 +653,7 @@
     <ClInclude Include="..\..\..\Windows\MemoryGlobal.h">
       <Filter>Windows</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Windows\TimeUtils.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="7z.ico" />
